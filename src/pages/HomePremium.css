@@ -1017,12 +1017,12 @@
 
 .floating-item {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 44px; /* Smaller icons */
+  height: 44px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 18px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1030,6 +1030,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   animation: float 6s ease-in-out infinite;
 }
+
 
 .item-1 { top: 20%; left: 20%; animation-delay: 0s; }
 .item-2 { bottom: 30%; right: 25%; animation-delay: 2s; }
