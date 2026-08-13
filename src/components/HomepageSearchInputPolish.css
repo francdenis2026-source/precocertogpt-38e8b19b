@@ -1,4 +1,29 @@
+@import "./HomepageSearchAdaptivePanel.css";
+
 /* UI/UX Pro Max polish: keep the active search field readable above the global results backdrop. */
+
+html:has(.pc-stable-search),
+body:has(.pc-stable-search) {
+  overflow: hidden !important;
+  overscroll-behavior: none !important;
+}
+
+body:has(.pc-stable-search) {
+  touch-action: none;
+}
+
+body:has(.pc-stable-search) .pc-home .pc-search,
+body:has(.pc-stable-search) .pc-home .pc-search input,
+body:has(.pc-stable-search) .pc-home .pc-search button,
+body:has(.pc-stable-search) .pc-stable-search__panel,
+body:has(.pc-stable-search) .pc-stable-search__panel a,
+body:has(.pc-stable-search) .pc-stable-search__panel button {
+  touch-action: manipulation;
+}
+
+body:has(.pc-stable-search) .pc-stable-search__body {
+  touch-action: pan-y;
+}
 
 .pc-search-overlay {
   z-index: auto !important;
