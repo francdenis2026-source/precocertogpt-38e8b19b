@@ -4,7 +4,7 @@ import { ArrowRight, PackageSearch, Store } from "lucide-react";
 import { buildCatalog, type Product } from "../data/catalog";
 import { fetchCatalog } from "../data/remoteCatalog";
 import { resolveProductImage } from "../data/productImageResolver";
-import { HomepageSearchOverlayPro } from "./HomepageSearchOverlayPro";
+import { HomepageSearchOverlayStable } from "./HomepageSearchOverlayStable";
 import "./HourlyHomeProductRotation.css";
 
 const HOUR_MS = 60 * 60 * 1000;
@@ -183,7 +183,7 @@ export function HourlyHomeProductRotation() {
 
   return (
     <>
-      <HomepageSearchOverlayPro />
+      <HomepageSearchOverlayStable />
       {rotation}
     </>
   );
