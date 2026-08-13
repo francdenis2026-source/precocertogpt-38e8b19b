@@ -4,6 +4,7 @@ import { ArrowRight, PackageSearch, Store } from "lucide-react";
 import { buildCatalog, type Product } from "../data/catalog";
 import { fetchCatalog } from "../data/remoteCatalog";
 import { resolveProductImage } from "../data/productImageResolver";
+import { HomepageSearchOverlayPro } from "./HomepageSearchOverlayPro";
 import "./HourlyHomeProductRotation.css";
 
 const HOUR_MS = 60 * 60 * 1000;
@@ -81,7 +82,6 @@ function chooseHourlyProducts(products: Product[], bucket: number) {
   const selected: Product[] = [];
   const seen = new Set<string>();
 
-  // Primeira passagem: prioriza diversidade, exibindo um produto por estabelecimento.
   for (const pool of pools) {
     const product = pool.products[pool.cursor++];
     if (!product) continue;
@@ -92,7 +92,6 @@ function chooseHourlyProducts(products: Product[], bucket: number) {
     if (selected.length >= HOME_PRODUCT_LIMIT) return selected;
   }
 
-  // Segunda passagem: completa a vitrine em rodízio, sem favorecer sempre a mesma loja.
   let hasCandidates = true;
   while (selected.length < HOME_PRODUCT_LIMIT && hasCandidates) {
     hasCandidates = false;
@@ -159,9 +158,7 @@ export function HourlyHomeProductRotation() {
 
   const hourlyProducts = useMemo(() => chooseHourlyProducts(products, bucket), [products, bucket]);
 
-  if (!target || !hourlyProducts.length) return null;
-
-  return createPortal(
+  const rotation = target && hourlyProducts.length ? createPortal(
     <>
       {hourlyProducts.map((product) => {
         const offer = bestOffer(product);
@@ -182,5 +179,12 @@ export function HourlyHomeProductRotation() {
       })}
     </>,
     target,
+  ) : null;
+
+  return (
+    <>
+      <HomepageSearchOverlayPro />
+      {rotation}
+    </>
   );
 }
