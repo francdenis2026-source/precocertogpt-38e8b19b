@@ -272,7 +272,11 @@
   font-size: 0.65rem; 
   font-weight: 800; 
   margin-top: auto;
-  transition: all var(--pc-fast) ease; 
+  transition:
+    transform 140ms cubic-bezier(.23, 1, .32, 1),
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
 }
 .pc-compare-button:hover { background: var(--pc-teal); color: #fff; border-color: var(--pc-teal); }
 .pc-compare-button svg { width: 12px; }
@@ -308,9 +312,10 @@
   padding: 24px; 
   box-shadow: var(--pc-shadow-md), 0 0 0 1px rgba(255,255,255,0.05); 
   backdrop-filter: blur(16px);
-  transition: 
-    opacity 1s ease-in-out,
-    filter 1s ease-in-out,
+  transition:
+    opacity 180ms ease,
+    filter 180ms ease,
+    transform 240ms cubic-bezier(.23, 1, .32, 1),
     box-shadow var(--pc-fast) ease,
     border-color var(--pc-fast) ease;
   min-height: 420px;
@@ -360,7 +365,7 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  transition: transform 0.8s ease, filter 0.4s ease;
+  transition: transform 240ms cubic-bezier(.23, 1, .32, 1), filter 180ms ease;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
 }
 .pc-no-image {
@@ -599,7 +604,10 @@
   border-radius: 12px; 
   background: rgba(0,0,0,0.05); 
   color: var(--pc-text); 
-  transition: all var(--pc-fast) ease;
+  transition:
+    transform 160ms cubic-bezier(.23, 1, .32, 1),
+    background-color 180ms ease,
+    color 180ms ease;
 }
 .pc-dialog-close:hover { background: rgba(0,0,0,0.1); transform: rotate(90deg); }
 [data-theme="dark"] .pc-dialog-close { background: rgba(255,255,255,0.08); }
@@ -619,7 +627,7 @@
   max-height: 380px; 
   object-fit: contain; 
   filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
-  transition: transform 0.6s var(--pc-ease);
+  transition: transform 240ms cubic-bezier(.23, 1, .32, 1);
 }
 .pc-dialog-media:hover img { transform: scale(1.04); }
 
@@ -722,7 +730,11 @@
   border-radius: 12px; 
   font-size: 0.8rem; 
   font-weight: 850; 
-  transition: all var(--pc-fast) ease;
+  transition:
+    transform 140ms cubic-bezier(.23, 1, .32, 1),
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
 }
 .pc-dialog-actions a { background: var(--pc-teal); color: #fff; box-shadow: 0 8px 20px rgba(31, 107, 97, 0.2); }
 .pc-dialog-actions a:hover { background: var(--pc-teal-strong); transform: translateY(-2px); }
