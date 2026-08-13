@@ -143,9 +143,9 @@ export async function fetchCatalog(query = ""): Promise<CatalogResult> {
 
   try {
     const [establishments, products, prices] = await Promise.all([
-      fetchAllRows("establishments", "id, name, neighborhood, brand_color"),
-      fetchAllRows("products", "id, name, brand, category, size, unit, barcode, image_url"),
-      fetchAllRows("prices", "product_id, establishment_id, value, previous_value, captured_at"),
+      fetchAllRows("establishments", "id, name, neighborhood, brand_color", "id"),
+      fetchAllRows("products", "id, name, brand, category, size, unit, barcode, image_url", "id"),
+      fetchAllRows("prices", "id, product_id, establishment_id, value, previous_value, captured_at", "id"),
     ]);
 
     const failure = establishments.error ?? products.error ?? prices.error;
