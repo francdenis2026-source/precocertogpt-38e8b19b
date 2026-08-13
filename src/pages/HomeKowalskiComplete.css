@@ -59,6 +59,83 @@ body:has(.pc-home) .pc-home > main {
   --pc-k-in-out: cubic-bezier(.77, 0, .175, 1);
 }
 
+/* GPT Taste — compact editorial direction, tuned for a local price utility. */
+.pc-home h1,
+.pc-home h2,
+.pc-home .pc-product-info > strong,
+.pc-home .pc-store-card strong {
+  font-family: Outfit, Manrope, sans-serif;
+}
+
+.pc-home .pc-hero {
+  min-height: 430px;
+  background: #052d28;
+}
+
+.pc-home .pc-hero-copy {
+  max-width: 800px;
+}
+
+.pc-home .pc-hero h1 {
+  max-width: 760px;
+  font-size: clamp(2.55rem, 4.8vw, 4.65rem);
+  line-height: .92;
+  letter-spacing: -.038em;
+}
+
+.pc-home .pc-hero::before {
+  background-position: 72% 46%;
+  filter: saturate(1.02) contrast(1.06) brightness(.86);
+}
+
+.pc-home .pc-hero::after {
+  background:
+    radial-gradient(circle at 72% 46%, rgba(246, 183, 60, .12), transparent 24%),
+    linear-gradient(90deg, rgba(3, 35, 31, .995) 0%, rgba(3, 35, 31, .95) 43%, rgba(3, 35, 31, .48) 70%, rgba(3, 35, 31, .14) 100%);
+}
+
+.pc-home .pc-search {
+  border-color: rgba(255, 255, 255, .9);
+  box-shadow: 0 22px 58px rgba(0, 0, 0, .28);
+}
+
+.pc-home .pc-action-strip a:nth-child(1) { background: #ffe0d4; }
+.pc-home .pc-action-strip a:nth-child(2) { background: #ffedb8; }
+.pc-home .pc-action-strip a:nth-child(3) { background: #d9f1f5; }
+
+.pc-home .pc-product-card {
+  overflow: hidden;
+  padding: 0;
+  border-color: rgba(18, 78, 68, .12);
+  background: #fffdf8;
+  box-shadow: 0 12px 34px rgba(8, 43, 37, .09);
+}
+
+.pc-home .pc-product-open,
+.pc-home .pc-price-line,
+.pc-home .pc-store-line,
+.pc-home .pc-compare-button {
+  margin-inline: 12px;
+}
+
+.pc-home .pc-product-open { width: calc(100% - 24px); margin-top: 12px; }
+.pc-home .pc-product-media { border-radius: 12px; background: linear-gradient(145deg, #f3f8f4, #fff8e8); }
+.pc-home .pc-compare-button { width: calc(100% - 24px); margin-bottom: 12px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .pc-home .pc-product-card:hover { transform: translateY(-5px); }
+  .pc-home .pc-product-card:hover .pc-product-media img { transform: scale(1.055); }
+}
+
+@media (max-width: 720px) {
+  .pc-home .pc-hero { min-height: 0; }
+  .pc-home .pc-hero h1 { max-width: 12ch; font-size: clamp(2.35rem, 11vw, 3.4rem); }
+  .pc-home .pc-hero::before { background-position: 64% center; }
+  .pc-home .pc-hero::after { background: linear-gradient(180deg, rgba(3, 35, 31, .92), rgba(3, 35, 31, .78) 55%, rgba(3, 35, 31, .98)); }
+}
+
+[data-theme="dark"] .pc-home .pc-product-card { background: #172b26; }
+
 /* Consolidated visual layer: one rhythm, one hierarchy, no offset-built whitespace. */
 .pc-home .pc-section {
   padding-block: clamp(36px, 4.25vw, 58px);
