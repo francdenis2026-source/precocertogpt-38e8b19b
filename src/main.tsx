@@ -20,7 +20,6 @@ import "./pages/HomeKowalskiComplete.css";
 import App from "./App";
 import { HourlyHomeProductRotation } from "./components/HourlyHomeProductRotation";
 import { HomepageSearchInputPolish } from "./components/HomepageSearchInputPolish";
-import { HomepageSearchVisibleTypingFix } from "./components/HomepageSearchVisibleTypingFix";
 import { startPaymentNotifications } from "./lib/paymentNotifications";
 
 const savedTheme = localStorage.getItem("theme");
@@ -36,7 +35,6 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
     <HomepageSearchInputPolish />
-    <HomepageSearchVisibleTypingFix />
     <HourlyHomeProductRotation />
   </StrictMode>,
 );
