@@ -382,7 +382,10 @@ export function HomePremium() {
                 { to: "/categoria/papelaria", icon: <Smartphone size={20} />, label: "Papelaria" },
                 { to: "/categoria/pizzaria", icon: <Pizza size={20} />, label: "Pizzaria" },
                 { to: "/categoria/lanchonete", icon: <Utensils size={20} />, label: "Lanchonete" },
-                { to: "/categoria/sorveteria", icon: <IceCream size={20} />, label: "Sorveteria" }
+                { to: "/categoria/sorveteria", icon: <IceCream size={20} />, label: "Sorveteria" },
+                { to: "/categoria/desapego", icon: <Tag size={20} />, label: "Desapego" },
+                { to: "/categoria/moveis-imoveis", icon: <Home size={20} />, label: "Móveis & Imóveis" },
+                { to: "/categoria/hotelaria", icon: <Bed size={20} />, label: "Hotelaria & Pousadas" }
               ].filter(item => item.label.toLowerCase().includes(categoryFilter.toLowerCase())).map((item, idx) => (
                 <Link key={idx} to={item.to} className="pc-service-item">
                   <div className="pc-service-icon">{item.icon}</div>

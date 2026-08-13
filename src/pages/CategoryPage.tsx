@@ -14,6 +14,9 @@ const categoryData: Record<string, any> = {
   "mercantil": { title: "Mercantis", description: "Tudo o que você precisa para seu lar.", phone: "(68) 99999-7777", hours: "08:00 - 19:00", address: "Bairros Diversos" },
   "frutaria": { title: "Frutarias", description: "Frutas e legumes frescos da estação.", phone: "(68) 99999-8888", hours: "07:00 - 18:00", address: "Feijó" },
   "papelaria": { title: "Papelarias", description: "Material escolar e escritório em um só lugar.", phone: "(68) 99999-9999", hours: "08:00 - 18:00", address: "Centro" },
+  "desapego": { title: "Desapego", description: "Oportunidades de itens usados e seminovos em Feijó.", phone: "(68) 99999-0001", hours: "Aberto para propostas", address: "Localizado em Feijó" },
+  "moveis-imoveis": { title: "Móveis & Imóveis", description: "As melhores opções de mobiliário e mercado imobiliário.", phone: "(68) 99999-0002", hours: "08:00 - 18:00", address: "Centro e Expansão" },
+  "hotelaria": { title: "Hotelaria & Pousadas", description: "Onde se hospedar com conforto e qualidade em Feijó.", phone: "(68) 99999-0003", hours: "24h", address: "Pontos estratégicos de Feijó" },
 };
 
 export function CategoryPage() {
