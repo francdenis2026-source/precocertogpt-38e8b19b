@@ -576,9 +576,7 @@ body {
     font-size: 0.8rem !important;
   }
 }
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 100%;
-}
+
 
 @media (max-width: 768px) {
   .site-header {
