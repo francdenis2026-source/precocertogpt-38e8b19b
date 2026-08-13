@@ -73,6 +73,7 @@ export function HomePremium() {
   const searchAreaRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogTriggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -101,6 +102,7 @@ export function HomePremium() {
 
   useEffect(() => {
     if (!selectedProduct) return;
+    dialogTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
@@ -121,6 +123,7 @@ export function HomePremium() {
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
+      dialogTriggerRef.current?.focus();
     };
   }, [selectedProduct]);
 
@@ -132,7 +135,7 @@ export function HomePremium() {
   const opportunities = useMemo(() => catalog.products
     .filter((product) => product.minPrice > 0)
     .sort((a, b) => (b.maxPrice - b.minPrice) - (a.maxPrice - a.minPrice))
-    .slice(0, 10), [catalog.products]);
+    .slice(0, 6), [catalog.products]);
 
   const [comparisonIndex, setComparisonIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -145,6 +148,8 @@ export function HomePremium() {
 
   useEffect(() => {
     if (comparableProducts.length <= 1) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches) return;
     
     // Create a pool of indices and shuffle them to avoid repetition
     const indicesPool = Array.from({ length: Math.min(comparableProducts.length, 24) }, (_, i) => i);
@@ -160,18 +165,22 @@ export function HomePremium() {
     
     shuffle(indicesPool);
 
+    let transitionTimer: ReturnType<typeof setTimeout> | undefined;
     const interval = setInterval(() => {
       setIsTransitioning(true);
-      setTimeout(() => {
+      transitionTimer = setTimeout(() => {
         currentIndex = (currentIndex + 1) % indicesPool.length;
         if (currentIndex === 0) shuffle(indicesPool);
         
         setComparisonIndex(indicesPool[currentIndex]);
         setIsTransitioning(false);
-      }, 1000); // Increased duration for a smoother, high-end feel
+      }, 240);
     }, 60000); // 60 seconds interval as requested
     
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      if (transitionTimer) clearTimeout(transitionTimer);
+    };
   }, [comparableProducts.length]);
 
   const comparisonProduct = comparableProducts[comparisonIndex] ?? opportunities[0] ?? catalog.products[0];
@@ -332,14 +341,14 @@ export function HomePremium() {
               const image = resolveProductImage(product);
               const saving = Math.max(0, product.maxPrice - product.minPrice);
               return (
-                <article className="pc-product-card" key={String(product.id)} onClick={() => setSelectedProduct(product)}>
-                  <div className="pc-product-open" aria-label={`Abrir comparação de ${product.name}`}>
+                <article className="pc-product-card" key={String(product.id)}>
+                  <button className="pc-product-open" type="button" onClick={() => setSelectedProduct(product)} aria-label={`Abrir comparação de ${product.name}`}>
                     <span className="pc-product-media">{image ? <img src={image} alt={product.name} loading="lazy" /> : <PackageSearch aria-hidden="true" />}</span>
                     <span className="pc-product-info"><small>{[product.brand, product.size].filter(Boolean).join(" · ")}</small><strong>{product.name}</strong></span>
-                  </div>
+                  </button>
                   <div className="pc-price-line"><span><small>Menor preço</small><strong>{money(product.minPrice)}</strong></span>{saving > 0 && <em>diferença de {money(saving)}</em>}</div>
                   <div className="pc-store-line"><Store aria-hidden="true" /><span><strong>{offer.establishment}</strong><small>{offer.neighborhood || "Feijó, AC"}</small></span></div>
-                  <button className="pc-compare-button" type="button">Comparar <ArrowRight aria-hidden="true" /></button>
+                  <button className="pc-compare-button" type="button" onClick={() => setSelectedProduct(product)} aria-label={`Comparar preços de ${product.name}`}>Comparar <ArrowRight aria-hidden="true" /></button>
                 </article>
               );
             })}
