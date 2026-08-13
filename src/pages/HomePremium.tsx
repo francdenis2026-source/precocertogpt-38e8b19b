@@ -24,6 +24,9 @@ import {
   Store,
   Sun,
   Tag,
+  Utensils,
+  IceCream,
+  Pizza,
   X,
 } from "lucide-react";
 import { buildCatalog, type CatalogPayload, type Product } from "../data/catalog";
@@ -348,15 +351,15 @@ export function HomePremium() {
         <section className="pc-services-strip">
           <div className="pc-shell">
             <div className="pc-services-scroll">
-              <Link to="/buscar?cat=conveniencia" className="pc-service-item">
+              <Link to="/buscar?q=conveniencia" className="pc-service-item">
                 <div className="pc-service-icon"><Clock3 size={20} /></div>
                 <span>Conveniência</span>
               </Link>
-              <Link to="/buscar?cat=padaria" className="pc-service-item">
+              <Link to="/buscar?q=padaria" className="pc-service-item">
                 <div className="pc-service-icon"><ShoppingBasket size={20} /></div>
                 <span>Padaria</span>
               </Link>
-              <Link to="/buscar?cat=açougue" className="pc-service-item">
+              <Link to="/buscar?q=açougue" className="pc-service-item">
                 <div className="pc-service-icon"><Tag size={20} /></div>
                 <span>Açougue</span>
               </Link>
@@ -368,11 +371,11 @@ export function HomePremium() {
                 <div className="pc-service-icon"><Store size={20} /></div>
                 <span>Lojas</span>
               </Link>
-              <Link to="/buscar?cat=mercantil" className="pc-service-item">
+              <Link to="/buscar?q=mercantil" className="pc-service-item">
                 <div className="pc-service-icon"><ShoppingCart size={20} /></div>
                 <span>Mercantil</span>
               </Link>
-              <Link to="/buscar?cat=frutaria" className="pc-service-item">
+              <Link to="/buscar?q=frutaria" className="pc-service-item">
                 <div className="pc-service-icon"><Sun size={20} /></div>
                 <span>Frutaria</span>
               </Link>
@@ -380,9 +383,21 @@ export function HomePremium() {
                 <div className="pc-service-icon"><BookOpen size={20} /></div>
                 <span>Livraria</span>
               </Link>
-              <Link to="/buscar?cat=papelaria" className="pc-service-item">
+              <Link to="/buscar?q=papelaria" className="pc-service-item">
                 <div className="pc-service-icon"><Smartphone size={20} /></div>
                 <span>Papelaria</span>
+              </Link>
+              <Link to="/buscar?q=pizzaria" className="pc-service-item">
+                <div className="pc-service-icon"><Pizza size={20} /></div>
+                <span>Pizzaria</span>
+              </Link>
+              <Link to="/buscar?q=lanchonete" className="pc-service-item">
+                <div className="pc-service-icon"><Utensils size={20} /></div>
+                <span>Lanchonete</span>
+              </Link>
+              <Link to="/buscar?q=sorveteria" className="pc-service-item">
+                <div className="pc-service-icon"><IceCream size={20} /></div>
+                <span>Sorveteria</span>
               </Link>
             </div>
           </div>
