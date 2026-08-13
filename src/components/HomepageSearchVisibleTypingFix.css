@@ -1,0 +1,21 @@
+.pc-search-overlay__floating-search input {
+  position: relative !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #172a25 !important;
+  caret-color: #17685d !important;
+  -webkit-text-fill-color: #172a25 !important;
+  text-shadow: none !important;
+}
+
+.pc-search-overlay__floating-search input::selection {
+  background: rgba(23, 104, 93, .18);
+  color: #172a25;
+}
+
+[data-theme="dark"] .pc-search-overlay__floating-search input {
+  color: #152722 !important;
+  caret-color: #17685d !important;
+  -webkit-text-fill-color: #152722 !important;
+}
