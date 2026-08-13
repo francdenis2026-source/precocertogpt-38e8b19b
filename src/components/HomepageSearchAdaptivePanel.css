@@ -1,0 +1,66 @@
+/* UI/UX Pro Max: search results grow with content, then scroll internally at the viewport limit. */
+
+.pc-stable-search__panel {
+  top: auto !important;
+  bottom: calc(100vh - var(--pc-hole-top) + 10px) !important;
+  height: auto !important;
+  max-height: max(180px, calc(var(--pc-hole-top) - 26px)) !important;
+}
+
+.pc-stable-search__header,
+.pc-stable-search__footer {
+  flex: 0 0 auto;
+}
+
+.pc-stable-search__body {
+  flex: 0 1 auto !important;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent wheel/touch scroll chaining from the result list to the homepage. */
+.pc-stable-search,
+.pc-stable-search__panel,
+.pc-stable-search__body {
+  overscroll-behavior: contain;
+}
+
+body.pc-search-page-locked {
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+/* Keep the actual search input interactive while page scrolling is locked. */
+body.pc-search-page-locked .pc-home .pc-search,
+body.pc-search-page-locked .pc-home .pc-search input,
+body.pc-search-page-locked .pc-home .pc-search button,
+body.pc-search-page-locked .pc-stable-search__panel,
+body.pc-search-page-locked .pc-stable-search__body,
+body.pc-search-page-locked .pc-stable-search__panel a,
+body.pc-search-page-locked .pc-stable-search__panel button {
+  touch-action: manipulation;
+}
+
+body.pc-search-page-locked .pc-stable-search__body {
+  touch-action: pan-y;
+}
+
+@media (max-width: 720px) {
+  .pc-stable-search__panel {
+    bottom: calc(100dvh - var(--pc-hole-top) + 8px) !important;
+    max-height: max(168px, calc(var(--pc-hole-top) - 18px)) !important;
+  }
+
+  .pc-stable-search__body {
+    scrollbar-gutter: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-stable-search__panel {
+    transition: none !important;
+  }
+}
