@@ -1,5 +1,8 @@
 import { FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight,
   BadgeCheck,
@@ -27,6 +30,8 @@ import { fetchCatalog } from "../data/remoteCatalog";
 import { resolveProductImage } from "../data/productImageResolver";
 import { suggestProducts } from "../lib/productSearch";
 import "./HomePremium.css";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const popularSearches = ["Arroz", "Café", "Leite", "Carne", "Limpeza"];
 const categories = [
@@ -71,6 +76,7 @@ export function HomePremium() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [theme, setTheme] = useState<Theme>(readTheme);
   const searchAreaRef = useRef<HTMLDivElement>(null);
+  const homeRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const dialogTriggerRef = useRef<HTMLElement | null>(null);
@@ -80,6 +86,32 @@ export function HomePremium() {
     document.documentElement.style.colorScheme = theme;
     window.localStorage.setItem("theme", theme);
   }, [theme]);
+
+  useGSAP(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
+    const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
+    intro
+      .fromTo(".pc-hero-copy > :is(.pc-kicker, h1, p)", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .62, stagger: .06 })
+      .fromTo(".pc-search-area", { y: 14, opacity: 0, clipPath: "inset(0 0 18% 0 round 13px)" }, { y: 0, opacity: 1, clipPath: "inset(0 0 0% 0 round 13px)", duration: .52 }, "-=.34")
+      .fromTo(".pc-quick", { opacity: 0 }, { opacity: 1, duration: .28 }, "-=.2");
+
+    gsap.utils.toArray<HTMLElement>(".pc-product-card").forEach((card, index) => {
+      gsap.fromTo(card,
+        { y: 26, opacity: .55, scale: .975 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: .55,
+          delay: Math.min(index * .045, .18),
+          ease: "power4.out",
+          scrollTrigger: { trigger: card, start: "top 92%", once: true },
+        },
+      );
+    });
+  }, { scope: homeRef });
 
   useEffect(() => {
     let active = true;
@@ -223,7 +255,7 @@ export function HomePremium() {
   };
 
   return (
-    <div className="pc-home">
+    <div className="pc-home" ref={homeRef}>
       <a className="pc-skip" href="#pc-content">Ir para o conteúdo</a>
 
       <header className="pc-header">
