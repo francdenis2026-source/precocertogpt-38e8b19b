@@ -14,6 +14,7 @@ import "./pages/HomeComparisonSpotlight.css";
 import "./pages/HomeSearchResultsContrast.css";
 import "./styles/GlobalScrollbarRefinement.css";
 import "./pages/HomePremiumEditorialV2.css";
+import "./pages/HomeCompactVibrant.css";
 import App from "./App";
 import { HourlyHomeProductRotation } from "./components/HourlyHomeProductRotation";
 import { startPaymentNotifications } from "./lib/paymentNotifications";
