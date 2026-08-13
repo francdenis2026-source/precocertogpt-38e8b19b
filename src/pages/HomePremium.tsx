@@ -434,11 +434,37 @@ export function HomePremium() {
         </section>
 
         <section className="pc-section pc-shell pc-how" aria-labelledby="pc-how-title">
-          <div className="pc-heading"><span>Simples de usar</span><h2 id="pc-how-title">Pesquisar, comparar e escolher.</h2></div>
-          <ol className="pc-steps">
-            <li><span>01</span><div><strong>Pesquise</strong><p>Digite o produto que deseja encontrar.</p></div></li>
-            <li><span>02</span><div><strong>Compare</strong><p>Veja preços e estabelecimentos disponíveis.</p></div></li>
-            <li><span>03</span><div><strong>Escolha</strong><p>Abra a melhor opção e planeje sua compra.</p></div></li>
+          <div className="pc-how-head">
+            <div>
+              <h2 id="pc-how-title">Da busca à melhor escolha, sem complicação.</h2>
+              <p>Em poucos instantes, o PreçoCerto transforma uma pesquisa em uma decisão mais inteligente.</p>
+            </div>
+            <Link to="/buscar">Experimentar agora <ArrowRight aria-hidden="true" /></Link>
+          </div>
+
+          <ol className="pc-how-flow">
+            <li className="pc-how-step pc-how-search-step">
+              <span className="pc-how-number" aria-hidden="true">1</span>
+              <div className="pc-how-icon"><Search aria-hidden="true" /></div>
+              <div className="pc-how-copy"><strong>Pesquise o que precisa</strong><p>Digite o nome do produto para começar.</p></div>
+              <div className="pc-how-demo pc-how-query" aria-hidden="true"><Search /><span>Arroz 5 kg</span><i><ArrowRight /></i></div>
+            </li>
+            <li className="pc-how-step pc-how-compare-step">
+              <span className="pc-how-number" aria-hidden="true">2</span>
+              <div className="pc-how-icon"><BadgeDollarSign aria-hidden="true" /></div>
+              <div className="pc-how-copy"><strong>Compare lado a lado</strong><p>Veja as opções disponíveis em diferentes lojas.</p></div>
+              <div className="pc-how-demo pc-how-bars" aria-hidden="true">
+                <span><i style={{ width: "100%" }} /><small>Loja A</small></span>
+                <span className="is-best"><i style={{ width: "72%" }} /><small>Loja B</small></span>
+                <span><i style={{ width: "88%" }} /><small>Loja C</small></span>
+              </div>
+            </li>
+            <li className="pc-how-step pc-how-choice-step">
+              <span className="pc-how-number" aria-hidden="true">3</span>
+              <div className="pc-how-icon"><CheckCircle2 aria-hidden="true" /></div>
+              <div className="pc-how-copy"><strong>Escolha com confiança</strong><p>A melhor opção ganha destaque para você decidir.</p></div>
+              <div className="pc-how-demo pc-how-result" aria-hidden="true"><span><CheckCircle2 /></span><div><small>Melhor opção</small><strong>Pronto para escolher</strong></div><ArrowRight /></div>
+            </li>
           </ol>
         </section>
 
