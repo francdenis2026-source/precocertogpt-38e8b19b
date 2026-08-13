@@ -65,7 +65,7 @@ body.pc-internal-deep :where(button,a[role="button"],a[style*="padding"]):disabl
 body.pc-merchant-deep aside{box-shadow:none!important}
 
 /* ---------- Shared interaction floor ---------- */
-:where(main,header,footer,nav) :where(a,button,input,select,textarea,[role="button"]):focus-visible{outline:3px solid color-mix(in srgb,#10b981 46%,transparent)!important;outline-offset:3px!important}
+:where(main,header,footer,nav) :where(a,button,input,select,textarea,[role="button"]):focus-visible{outline:3px solid color-mix(in srgb,var(--blue,#5b46e8) 46%,transparent)!important;outline-offset:3px!important}
 :where(main,header,footer,nav) :where(button,[role="button"],a.button,a[class*="button"],a[class*="cta"],a[class*="action"]){transition:transform var(--imp-fast) var(--imp-ease),background-color var(--imp-ui) ease,border-color var(--imp-ui) ease,color var(--imp-ui) ease,box-shadow var(--imp-ui) ease,filter var(--imp-ui) ease!important}
 :where(main,header,footer,nav) :where(button,[role="button"],a.button,a[class*="button"],a[class*="cta"],a[class*="action"]):active:not(:disabled){transform:scale(.975)!important}
 :where(input,select,textarea){transition:border-color var(--imp-ui) ease,box-shadow var(--imp-ui) ease,background-color var(--imp-ui) ease!important}
