@@ -370,54 +370,25 @@ export function HomePremium() {
               </div>
             </div>
             <div className="pc-services-scroll">
-              <Link to="/buscar?q=conveniencia" className="pc-service-item">
-                <div className="pc-service-icon"><Clock3 size={20} /></div>
-                <span>Conveniência</span>
-              </Link>
-              <Link to="/buscar?q=padaria" className="pc-service-item">
-                <div className="pc-service-icon"><ShoppingBasket size={20} /></div>
-                <span>Padaria</span>
-              </Link>
-              <Link to="/buscar?q=açougue" className="pc-service-item">
-                <div className="pc-service-icon"><Tag size={20} /></div>
-                <span>Açougue</span>
-              </Link>
-              <Link to="/farmacias" className="pc-service-item">
-                <div className="pc-service-icon"><HeartPulse size={20} /></div>
-                <span>Farmácia</span>
-              </Link>
-              <Link to="/estabelecimentos" className="pc-service-item">
-                <div className="pc-service-icon"><Store size={20} /></div>
-                <span>Lojas</span>
-              </Link>
-              <Link to="/buscar?q=mercantil" className="pc-service-item">
-                <div className="pc-service-icon"><ShoppingCart size={20} /></div>
-                <span>Mercantil</span>
-              </Link>
-              <Link to="/buscar?q=frutaria" className="pc-service-item">
-                <div className="pc-service-icon"><Sun size={20} /></div>
-                <span>Frutaria</span>
-              </Link>
-              <Link to="/dorinha-barroso" className="pc-service-item">
-                <div className="pc-service-icon"><BookOpen size={20} /></div>
-                <span>Livraria</span>
-              </Link>
-              <Link to="/buscar?q=papelaria" className="pc-service-item">
-                <div className="pc-service-icon"><Smartphone size={20} /></div>
-                <span>Papelaria</span>
-              </Link>
-              <Link to="/buscar?q=pizzaria" className="pc-service-item">
-                <div className="pc-service-icon"><Pizza size={20} /></div>
-                <span>Pizzaria</span>
-              </Link>
-              <Link to="/buscar?q=lanchonete" className="pc-service-item">
-                <div className="pc-service-icon"><Utensils size={20} /></div>
-                <span>Lanchonete</span>
-              </Link>
-              <Link to="/buscar?q=sorveteria" className="pc-service-item">
-                <div className="pc-service-icon"><IceCream size={20} /></div>
-                <span>Sorveteria</span>
-              </Link>
+              {[
+                { to: "/categoria/conveniencia", icon: <Clock3 size={20} />, label: "Conveniência" },
+                { to: "/categoria/padaria", icon: <ShoppingBasket size={20} />, label: "Padaria" },
+                { to: "/categoria/acougue", icon: <Tag size={20} />, label: "Açougue" },
+                { to: "/categoria/farmacia", icon: <HeartPulse size={20} />, label: "Farmácia" },
+                { to: "/estabelecimentos", icon: <Store size={20} />, label: "Lojas" },
+                { to: "/categoria/mercantil", icon: <ShoppingCart size={20} />, label: "Mercantil" },
+                { to: "/categoria/frutaria", icon: <Sun size={20} />, label: "Frutaria" },
+                { to: "/dorinha-barroso", icon: <BookOpen size={20} />, label: "Livraria" },
+                { to: "/categoria/papelaria", icon: <Smartphone size={20} />, label: "Papelaria" },
+                { to: "/categoria/pizzaria", icon: <Pizza size={20} />, label: "Pizzaria" },
+                { to: "/categoria/lanchonete", icon: <Utensils size={20} />, label: "Lanchonete" },
+                { to: "/categoria/sorveteria", icon: <IceCream size={20} />, label: "Sorveteria" }
+              ].filter(item => item.label.toLowerCase().includes(categoryFilter.toLowerCase())).map((item, idx) => (
+                <Link key={idx} to={item.to} className="pc-service-item">
+                  <div className="pc-service-icon">{item.icon}</div>
+                  <span>{item.label}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
