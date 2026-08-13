@@ -8,6 +8,39 @@ body:has(.pc-home) .pc-home > main {
   padding-top: 0 !important;
 }
 
+/* Header/hero boundary — keep the photography below the navigation plane. */
+.pc-home .pc-header {
+  isolation: isolate;
+  background: linear-gradient(90deg, rgba(4, 39, 35, .99), rgba(5, 48, 42, .97));
+  border-bottom: 1px solid rgba(223, 242, 234, .22);
+  box-shadow: 0 10px 30px rgba(2, 24, 21, .12);
+}
+
+.pc-home .pc-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 176, 146, .5) 12%, rgba(223, 242, 234, .3) 50%, rgba(255, 176, 146, .5) 88%, transparent 100%);
+}
+
+.pc-home .pc-header-inner {
+  border-bottom: 0;
+}
+
+.pc-home .pc-hero::before {
+  top: 70px;
+}
+
+@media (max-width: 1020px) {
+  .pc-home .pc-hero::before { top: 66px; }
+}
+
+@media (max-width: 720px) {
+  .pc-home .pc-hero::before { top: 64px; }
+}
+
 .pc-home {
   --pc-k-fast: 120ms;
   --pc-k-normal: 180ms;
