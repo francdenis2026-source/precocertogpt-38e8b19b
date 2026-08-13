@@ -29,6 +29,40 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      document.addEventListener("pointerdown", function (event) {
+        var target = event.target;
+        if (!(target instanceof Element)) return;
+        if (!target.closest(".pc-stable-search__header > button")) return;
+
+        var input = document.querySelector("#pc-home-search");
+        if (input instanceof HTMLInputElement) {
+          var setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value");
+          if (setter && setter.set) setter.set.call(input, "");
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+          input.dispatchEvent(new KeyboardEvent("keydown", {
+            key: "Escape",
+            code: "Escape",
+            bubbles: true,
+            cancelable: true
+          }));
+          input.blur();
+        }
+
+        document.body.classList.remove("pc-search-input-active");
+
+        requestAnimationFrame(function () {
+          var nextInput = document.querySelector("#pc-home-search");
+          if (nextInput instanceof HTMLInputElement) {
+            var nextSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value");
+            if (nextSetter && nextSetter.set) nextSetter.set.call(nextInput, "");
+            nextInput.dispatchEvent(new Event("input", { bubbles: true }));
+            nextInput.blur();
+          }
+          document.body.classList.remove("pc-search-input-active");
+        });
+      }, true);
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
