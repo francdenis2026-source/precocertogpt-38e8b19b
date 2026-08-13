@@ -29,7 +29,7 @@ import {
   Pizza,
   X,
 } from "lucide-react";
-import { buildCatalog, type CatalogPayload, type Product } from "../data/catalog";
+import { buildCatalog, type CatalogPayload, type Product, verifiedDatasetMetrics } from "../data/catalog";
 import { fetchCatalog } from "../data/remoteCatalog";
 import { resolveProductImage } from "../data/productImageResolver";
 import { suggestProducts } from "../lib/productSearch";
@@ -73,7 +73,7 @@ export function HomePremium() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [catalog, setCatalog] = useState<CatalogPayload>(initialCatalog);
+  const [catalog, setCatalog] = useState<CatalogPayload>({ products: [], stores: [], metrics: verifiedDatasetMetrics, updatedAt: new Date().toISOString() });
   const [catalogLoading, setCatalogLoading] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeResult, setActiveResult] = useState(-1);
@@ -122,6 +122,8 @@ export function HomePremium() {
       .fromTo(".pc-quick", { opacity: 0 }, { opacity: 1, duration: .28 }, "-=.2");
 
     gsap.utils.toArray<HTMLElement>(".pc-product-card").forEach((card, index) => {
+      // Usamos uma chave de animação única baseada no ID do produto para evitar problemas de reutilização
+      const productId = card.getAttribute("data-product-id");
       gsap.fromTo(card,
         { y: 26, opacity: .55, scale: .975 },
         {
