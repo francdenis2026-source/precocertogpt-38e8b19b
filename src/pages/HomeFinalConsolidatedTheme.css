@@ -1,3 +1,19 @@
 @import "./HomeNeoTokens.css";
 @import "./HomeNeoHero.css";
 @import "./HomeNeoSections.css";
+
+/* Final backdrop visibility pass: one photograph across the complete homepage. */
+.pc-home::before{background-image:url('/marketplace-local-profissional-v2.webp')!important;background-position:center 42%!important;background-size:cover!important;background-repeat:no-repeat!important;filter:saturate(.8) contrast(1.06) brightness(.9)!important;opacity:1!important}
+.pc-home::after{background:linear-gradient(180deg,rgba(244,240,247,.48),rgba(244,240,247,.62) 28%,rgba(244,240,247,.70) 72%,rgba(244,240,247,.58))!important}
+[data-theme="dark"] .pc-home::after{background:linear-gradient(180deg,rgba(18,13,29,.48),rgba(18,13,29,.60) 30%,rgba(18,13,29,.68))!important}
+.pc-home :is(.pc-dynamic-ad,.pc-action-strip,.pc-categories,.pc-opportunities,.pc-stores,.pc-how){background:transparent!important}
+.pc-home .pc-hero,.pc-home .pc-compare-section,.pc-home .pc-basket-section,.pc-home .pc-commercial{background:transparent!important}
+.pc-home .pc-hero::before,.pc-home .pc-basket-section::before,.pc-home .pc-commercial::before{background-image:none!important;background:transparent!important;filter:none!important}
+.pc-home .pc-hero::after{background:linear-gradient(90deg,rgba(23,17,38,.76),rgba(23,17,38,.58) 43%,rgba(42,29,62,.28) 72%,rgba(42,29,62,.05))!important}
+.pc-home .pc-compare-section::before{background-image:none!important;background:linear-gradient(105deg,rgba(23,17,38,.72),rgba(42,29,62,.54) 58%,rgba(42,29,62,.14))!important}
+.pc-home .pc-basket-section::after{background:linear-gradient(90deg,rgba(23,17,38,.72),rgba(42,29,62,.52) 56%,rgba(42,29,62,.14))!important}
+.pc-home .pc-commercial::after{background:linear-gradient(90deg,rgba(23,17,38,.74),rgba(42,29,62,.52) 55%,rgba(42,29,62,.08))!important}
+.pc-home .pc-how::before{background:linear-gradient(135deg,rgba(255,253,249,.52),rgba(241,235,244,.46))!important}
+.pc-home :is(.pc-ad-card,.pc-action-strip-inner,.pc-category,.pc-product-card,.pc-store-card,.pc-how-step){background:rgba(255,253,249,.84)!important;backdrop-filter:blur(8px)}
+[data-theme="dark"] .pc-home :is(.pc-ad-card,.pc-action-strip-inner,.pc-category,.pc-product-card,.pc-store-card,.pc-how-step){background:rgba(33,24,46,.76)!important}
+@media(max-width:720px){.pc-home::after{background:linear-gradient(180deg,rgba(244,240,247,.52),rgba(244,240,247,.66))!important}[data-theme="dark"] .pc-home::after{background:linear-gradient(180deg,rgba(18,13,29,.52),rgba(18,13,29,.66))!important}.pc-home .pc-hero::after{background:linear-gradient(180deg,rgba(23,17,38,.68),rgba(23,17,38,.44) 55%,rgba(23,17,38,.70))!important}}
