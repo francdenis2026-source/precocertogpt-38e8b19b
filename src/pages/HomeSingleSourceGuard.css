@@ -1,0 +1,38 @@
+/* Single-source guard for / homepage.
+   Loaded last to prevent legacy homepage themes from winning through specificity. */
+html body .pc-home.pc-home{
+  background:var(--taste-sand,var(--uix-bg,#f7f4ed))!important;
+  color:var(--taste-ink,var(--uix-text,#162333))!important;
+  background-image:none!important;
+}
+html body .pc-home.pc-home::before,
+html body .pc-home.pc-home::after{display:none!important;background:none!important;opacity:0!important;filter:none!important}
+html body .pc-home.pc-home .pc-dynamic-ad,
+html body .pc-home.pc-home .pc-services-strip{display:none!important}
+html body .pc-home.pc-home .pc-header{background:rgba(11,27,43,.84)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;box-shadow:none!important;backdrop-filter:blur(10px) saturate(112%)!important}
+html body .pc-home.pc-home .pc-header.is-scrolled{background:rgba(11,27,43,.96)!important;box-shadow:0 6px 20px rgba(4,12,20,.16)!important}
+html body .pc-home.pc-home .pc-header-inner{height:56px!important}
+html body .pc-home.pc-home .pc-logo img{width:158px!important;max-width:158px!important;height:36px!important;object-fit:contain!important}
+html body .pc-home.pc-home .pc-merchant{background:var(--taste-green,#15745f)!important;color:#fff!important;border-color:var(--taste-green,#15745f)!important}
+html body .pc-home.pc-home .pc-hero{min-height:370px!important;padding:76px 0 28px!important;background:var(--taste-navy,#0b1b2b)!important;overflow:hidden!important}
+html body .pc-home.pc-home .pc-hero::before{display:block!important;background:url('/marketplace-local-profissional-v2.webp') 70% 42%/cover no-repeat!important;filter:saturate(.76) contrast(1.03) brightness(.72)!important;opacity:1!important}
+html body .pc-home.pc-home .pc-hero::after{display:block!important;background:linear-gradient(90deg,rgba(11,27,43,.98),rgba(11,27,43,.92) 44%,rgba(11,27,43,.60) 70%,rgba(11,27,43,.22))!important;opacity:1!important}
+html body .pc-home.pc-home .pc-hero h1{max-width:720px!important;font-size:clamp(2.05rem,3.7vw,3.35rem)!important;line-height:.98!important}
+html body .pc-home.pc-home .pc-search-area{max-width:700px!important;margin-top:14px!important}
+html body .pc-home.pc-home .pc-categories,
+html body .pc-home.pc-home .pc-opportunities,
+html body .pc-home.pc-home .pc-how{background:transparent!important;border-color:transparent!important}
+html body .pc-home.pc-home .pc-product-grid>.pc-product-card:nth-child(n+5){display:none!important}
+html body .pc-home.pc-home .pc-product-card{background:var(--taste-paper,#fbf9f4)!important;border-color:var(--taste-line,#d9d3c9)!important;border-radius:9px!important;box-shadow:0 6px 18px rgba(10,27,43,.07)!important;transform:none!important}
+html body .pc-home.pc-home .pc-compare-section{background:linear-gradient(110deg,#0b1b2b,#132a3f)!important}
+html body .pc-home.pc-home .pc-compare-product{max-width:380px!important;min-height:0!important;background:var(--taste-paper,#fbf9f4)!important;border-radius:10px!important}
+html body .pc-home.pc-home .pc-offer-row-placeholder{display:none!important}
+html body .pc-home.pc-home .pc-footer{background:#0b1b2b!important;color:#dce4e9!important}
+@media(max-width:720px){
+  html body .pc-home.pc-home .pc-header-inner{height:54px!important}
+  html body .pc-home.pc-home .pc-logo img{width:146px!important;max-width:146px!important;height:34px!important}
+  html body .pc-home.pc-home .pc-hero{min-height:0!important;padding:68px 0 22px!important}
+  html body .pc-home.pc-home .pc-hero::before{background-position:62% center!important}
+  html body .pc-home.pc-home .pc-compare-product{max-width:none!important;width:100%!important}
+}
+@media(prefers-reduced-motion:reduce){html body .pc-home.pc-home *,html body .pc-home.pc-home *::before,html body .pc-home.pc-home *::after{animation:none!important;scroll-behavior:auto!important}}
