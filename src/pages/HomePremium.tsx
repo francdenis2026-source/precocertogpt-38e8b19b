@@ -28,6 +28,7 @@ import {
   IceCream,
   Pizza,
   X,
+  Filter
 } from "lucide-react";
 import { buildCatalog, type CatalogPayload, type Product } from "../data/catalog";
 import { fetchCatalog } from "../data/remoteCatalog";
@@ -72,6 +73,7 @@ function bestOffer(product: Product) {
 export function HomePremium() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [catalog, setCatalog] = useState<CatalogPayload>(initialCatalog);
   const [catalogLoading, setCatalogLoading] = useState(true);
@@ -350,6 +352,23 @@ export function HomePremium() {
         
         <section className="pc-services-strip">
           <div className="pc-shell">
+            <div className="pc-filter-bar" style={{ marginBottom: '24px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <div style={{ position: 'relative', flex: '1', minWidth: '200px' }}>
+                <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--pc-muted)', width: '16px' }} />
+                <input 
+                  type="text" 
+                  placeholder="Filtrar categorias..." 
+                  value={categoryFilter}
+                  onChange={(e) => setCategoryFilter(e.target.value)}
+                  style={{ width: '100%', padding: '10px 12px 10px 36px', borderRadius: '12px', border: '1px solid var(--pc-border)', background: 'var(--pc-paper)', fontSize: '0.85rem' }}
+                />
+              </div>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '12px', border: '1px solid var(--pc-border)', background: 'var(--pc-paper)', fontSize: '0.8rem', fontWeight: 700 }}>
+                  <Filter size={14} /> Ordem A-Z
+                </button>
+              </div>
+            </div>
             <div className="pc-services-scroll">
               <Link to="/buscar?q=conveniencia" className="pc-service-item">
                 <div className="pc-service-icon"><Clock3 size={20} /></div>
