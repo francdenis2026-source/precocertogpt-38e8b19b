@@ -63,6 +63,7 @@ import "./components/KowalskiLegacyDeep.css";
 import "./components/ImpeccableFullSitePolish.css";
 import "./components/ImpeccableStructuralLegacy.css";
 import "./components/DorinhaEditorialCompactV6.css";
+import "./pages/HomeOriginalLogoRestore.css";
 
 export default function App() {
   return (
