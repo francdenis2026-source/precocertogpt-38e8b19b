@@ -41,6 +41,23 @@ body:has(.pc-home) .pc-home > main {
   .pc-home .pc-hero::before { top: 64px; }
 }
 
+/* Utility rail — show the complete surface instead of tucking its top under the hero. */
+.pc-home .pc-action-strip {
+  margin-top: 0;
+  padding-top: 10px;
+}
+
+.pc-home .pc-action-strip-inner {
+  border: 1px solid rgba(10, 57, 51, .12);
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(8, 43, 37, .11);
+}
+
+@media (max-width: 720px) {
+  .pc-home .pc-action-strip { padding-top: 0; }
+  .pc-home .pc-action-strip-inner { border-radius: 0; }
+}
+
 .pc-home {
   --pc-k-fast: 120ms;
   --pc-k-normal: 180ms;
