@@ -555,7 +555,7 @@ export function HomePremium() {
                 <div className="pc-offer-list">
                   {comparisonOffers.length > 0 ? (
                     comparisonOffers.map((offer, idx) => (
-                      <div key={`${comparisonProduct.id}-${offer.establishmentId}-${idx}`} className={`pc-offer-row ${idx === 0 ? "is-best" : ""}`}>
+                      <div key={`${comparisonProduct.id}-${offer.establishmentId}`} className={`pc-offer-row ${idx === 0 ? "is-best" : ""}`}>
                         <span className="pc-offer-rank">{idx + 1}</span>
                         <span>
                           <strong>{offer.establishment}</strong>
@@ -582,7 +582,7 @@ export function HomePremium() {
           <div className="pc-heading pc-heading-row"><div><span>Comércio local</span><h2 id="pc-stores-title">Estabelecimentos para explorar.</h2></div><Link to="/estabelecimentos">Ver todos <ArrowRight aria-hidden="true" /></Link></div>
           <div className="pc-store-grid">
             {stores.map((store) => (
-              <Link className="pc-store-card" to={`/estabelecimento/${store.slug}`} key={String(store.id)}>
+              <Link className="pc-store-card" to={`/estabelecimento/${store.slug}`} key={String(store.id)} data-store-id={String(store.id)}>
                 <span className="pc-store-avatar" style={{ background: store.color }}><Store aria-hidden="true" /></span>
                 <span><strong>{store.name}</strong><small>{store.neighborhood || "Feijó, AC"}</small><em>{store.products} {store.products === 1 ? "produto" : "produtos"} no catálogo</em></span>
                 <ChevronRight aria-hidden="true" />
