@@ -1,4 +1,4 @@
-import { CSSProperties, KeyboardEvent as ReactKeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
+import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowRight, LoaderCircle, PackageSearch, Search, Store, X } from "lucide-react";
 import { buildCatalog, type CatalogPayload, type Product } from "../data/catalog";
@@ -6,15 +6,21 @@ import { fetchCatalog } from "../data/remoteCatalog";
 import { resolveProductImage } from "../data/productImageResolver";
 import { suggestProducts } from "../lib/productSearch";
 import "./HomepageSearchOverlayPro.css";
+import "./HomepageSearchOverlayAboveFix.css";
 
 const seed = buildCatalog();
 const money = (value: number) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
+const nativeValueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set;
 
 type OverlayPosition = {
   top: number;
   left: number;
   width: number;
   maxHeight: number;
+  barTop: number;
+  barLeft: number;
+  barWidth: number;
+  barHeight: number;
 };
 
 function resultHref(product: Product) {
@@ -58,7 +64,8 @@ export function HomepageSearchOverlayPro() {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [position, setPosition] = useState<OverlayPosition | null>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
+  const floatingInputRef = useRef<HTMLInputElement>(null);
 
   const suggestions = useMemo(() => {
     const normalized = query.trim();
@@ -77,49 +84,63 @@ export function HomepageSearchOverlayPro() {
   useEffect(() => {
     const getInput = () => document.querySelector<HTMLInputElement>("#pc-home-search");
     const getSearchArea = () => document.querySelector<HTMLElement>(".pc-home .pc-search-area");
+    const getSearchForm = () => document.querySelector<HTMLElement>(".pc-home .pc-search");
 
     const updatePosition = () => {
       const anchor = getSearchArea();
-      if (!anchor) return;
+      const form = getSearchForm();
+      if (!anchor || !form) return;
+
       const rect = anchor.getBoundingClientRect();
+      const formRect = form.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
       const mobile = viewportWidth <= 720;
       const gutter = mobile ? 12 : 16;
+      const gap = mobile ? 8 : 10;
       const left = mobile ? gutter : Math.max(gutter, rect.left);
       const width = mobile ? viewportWidth - gutter * 2 : Math.min(rect.width, viewportWidth - left - gutter);
-      const availableBelow = viewportHeight - rect.bottom - gutter;
-      const preferredHeight = mobile ? 460 : 520;
-      const useAbove = availableBelow < 280 && rect.top > availableBelow;
-      const maxHeight = Math.max(220, Math.min(preferredHeight, useAbove ? rect.top - gutter * 2 : availableBelow));
-      const top = useAbove ? Math.max(gutter, rect.top - maxHeight - 10) : Math.min(viewportHeight - 220, rect.bottom + 10);
-      setPosition({ top, left, width, maxHeight });
+
+      // Resultado SEMPRE acima da barra, como solicitado.
+      const availableAbove = Math.max(150, formRect.top - gutter - gap);
+      const preferredHeight = mobile ? 360 : 460;
+      const maxHeight = Math.min(preferredHeight, availableAbove);
+      const top = Math.max(gutter, formRect.top - maxHeight - gap);
+
+      setPosition({
+        top,
+        left,
+        width,
+        maxHeight,
+        barTop: formRect.top,
+        barLeft: formRect.left,
+        barWidth: formRect.width,
+        barHeight: formRect.height,
+      });
     };
 
-    const onFocus = (event: FocusEvent) => {
-      const target = event.target as HTMLElement;
-      if (!target.matches?.("#pc-home-search")) return;
-      const input = target as HTMLInputElement;
+    const openFromInput = (input: HTMLInputElement) => {
       setQuery(input.value);
       setOpen(input.value.trim().length >= 2);
       setActiveIndex(-1);
       updatePosition();
     };
 
+    const onFocus = (event: FocusEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.matches?.("#pc-home-search")) return;
+      openFromInput(target as HTMLInputElement);
+    };
+
     const onInput = (event: Event) => {
       const target = event.target as HTMLElement;
       if (!target.matches?.("#pc-home-search")) return;
-      const value = (target as HTMLInputElement).value;
-      setQuery(value);
-      setOpen(value.trim().length >= 2);
-      setActiveIndex(-1);
-      updatePosition();
+      openFromInput(target as HTMLInputElement);
     };
 
     const onPointerDown = (event: PointerEvent) => {
       const target = event.target as Node;
       const area = getSearchArea();
-      if (area?.contains(target) || panelRef.current?.contains(target)) return;
+      if (area?.contains(target) || panelRef.current?.contains(target) || (target instanceof Element && target.closest(".pc-search-overlay__floating-search"))) return;
       setOpen(false);
       setActiveIndex(-1);
     };
@@ -187,6 +208,47 @@ export function HomepageSearchOverlayPro() {
     };
   }, [activeIndex, open, suggestions]);
 
+  const syncOriginalInput = (value: string) => {
+    setQuery(value);
+    setOpen(value.trim().length >= 2);
+    setActiveIndex(-1);
+    const original = document.querySelector<HTMLInputElement>("#pc-home-search");
+    if (original) {
+      nativeValueSetter?.call(original, value);
+      original.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+  };
+
+  const clearSearch = () => {
+    syncOriginalInput("");
+    setOpen(false);
+    requestAnimationFrame(() => {
+      const original = document.querySelector<HTMLInputElement>("#pc-home-search");
+      original?.focus();
+    });
+  };
+
+  const handleFloatingKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setOpen(false);
+      setActiveIndex(-1);
+      document.querySelector<HTMLInputElement>("#pc-home-search")?.focus();
+      return;
+    }
+    if (!suggestions.length) return;
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveIndex((current) => (current + 1) % suggestions.length);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveIndex((current) => current <= 0 ? suggestions.length - 1 : current - 1);
+    } else if (event.key === "Enter" && activeIndex >= 0) {
+      event.preventDefault();
+      window.location.assign(resultHref(suggestions[activeIndex]));
+    }
+  };
+
   if (!open || query.trim().length < 2 || !position || typeof document === "undefined") return null;
 
   const panelStyle = {
@@ -196,9 +258,49 @@ export function HomepageSearchOverlayPro() {
     "--pc-search-max-height": `${position.maxHeight}px`,
   } as CSSProperties;
 
+  const floatingStyle = {
+    "--pc-floating-top": `${position.barTop}px`,
+    "--pc-floating-left": `${position.barLeft}px`,
+    "--pc-floating-width": `${position.barWidth}px`,
+    "--pc-floating-height": `${position.barHeight}px`,
+  } as CSSProperties;
+
   return createPortal(
     <div className="pc-search-overlay" aria-hidden="false">
       <button className="pc-search-overlay__backdrop" type="button" aria-label="Fechar resultados da busca" onClick={() => setOpen(false)} />
+
+      <form
+        className="pc-search-overlay__floating-search"
+        style={floatingStyle}
+        role="search"
+        onSubmit={(event) => {
+          event.preventDefault();
+          const value = query.trim();
+          window.location.assign(value ? `/buscar?q=${encodeURIComponent(value)}` : "/buscar");
+        }}
+      >
+        <Search aria-hidden="true" />
+        <label className="sr-only" htmlFor="pc-home-search-floating">Pesquisar produto</label>
+        <input
+          ref={floatingInputRef}
+          id="pc-home-search-floating"
+          value={query}
+          onChange={(event) => syncOriginalInput(event.target.value)}
+          onKeyDown={handleFloatingKeyDown}
+          placeholder="Busque arroz, café, carne, leite..."
+          autoComplete="off"
+          aria-label="Pesquisar produto"
+          aria-expanded="true"
+          aria-controls="pc-search-results-global"
+        />
+        <button className="pc-search-overlay__clear" type="button" onClick={clearSearch} aria-label="Limpar pesquisa" title="Limpar pesquisa">
+          <X aria-hidden="true" />
+        </button>
+        <button className="pc-search-overlay__submit" type="submit">
+          <span>Encontrar menor preço</span><ArrowRight aria-hidden="true" />
+        </button>
+      </form>
+
       <section className="pc-search-overlay__panel" style={panelStyle} ref={panelRef} aria-label="Resultados da busca">
         <header className="pc-search-overlay__header">
           <div>
@@ -209,7 +311,7 @@ export function HomepageSearchOverlayPro() {
           <button type="button" onClick={() => setOpen(false)} aria-label="Fechar resultados"><X aria-hidden="true" /></button>
         </header>
 
-        <div className="pc-search-overlay__body" role="listbox" aria-label={`Sugestões para ${query}`}>
+        <div id="pc-search-results-global" className="pc-search-overlay__body" role="listbox" aria-label={`Sugestões para ${query}`}>
           {catalogLoading && !suggestions.length ? (
             <div className="pc-search-overlay__state" role="status">
               <LoaderCircle className="is-loading" aria-hidden="true" />
