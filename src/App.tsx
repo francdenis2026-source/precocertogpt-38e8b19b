@@ -54,7 +54,6 @@ import { CustomerOrders } from "./components/CustomerOrders";
 import { MercadoPagoCallback } from "./components/MercadoPagoCallback";
 import { CollaboratePage, ContactPage, PharmaciesPage } from "./components/PublicFooterServicePages";
 import { HomePremium } from "./pages/HomePremium";
-import { CategoryPage } from "./pages/CategoryPage";
 import { FavoritesProvider } from "./features/favorites/FavoritesProvider";
 import { SavedFavoritesPage } from "./features/favorites/SavedFavoritesPage";
 import { CommerceIntentBridge } from "./features/favorites/CommerceIntentBridge";
@@ -105,7 +104,6 @@ export default function App() {
         <AuthorMerchantDashboardWelcome />
         <Routes>
           <Route path="/" element={<HomePremium />} />
-          <Route path="/categoria/:category" element={<CategoryPage />} />
           <Route path="/buscar" element={<SmartCompareSearchProMax />} />
           <Route path="/favoritos" element={<SavedFavoritesPage />} />
           <Route path="/estabelecimentos" element={<EstablishmentsMarketplacePage />} />
