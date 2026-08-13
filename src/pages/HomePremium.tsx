@@ -187,7 +187,7 @@ export function HomePremium() {
   const opportunities = useMemo(() => catalog.products
     .filter((product) => product.minPrice > 0)
     .sort((a, b) => (b.maxPrice - b.minPrice) - (a.maxPrice - a.minPrice))
-    .slice(0, 6), [catalog.products]);
+    .slice(0, 5), [catalog.products]);
 
   const [comparisonIndex, setComparisonIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -386,16 +386,20 @@ export function HomePremium() {
         </section>
 
         <section className="pc-section pc-shell pc-opportunities" aria-labelledby="pc-opportunities-title">
-          <div className="pc-heading pc-heading-row"><div><span>Oportunidades do catálogo</span><h2 id="pc-opportunities-title">Produtos com diferença de preço para comparar.</h2></div><Link to="/buscar">Ver todos <ArrowRight aria-hidden="true" /></Link></div>
+          <div className="pc-heading pc-heading-row"><div><span>Seleção rápida</span><h2 id="pc-opportunities-title">Poucos destaques. Boas diferenças de preço.</h2><p>Uma amostra objetiva do catálogo para você comparar sem excesso de informação.</p></div><Link to="/buscar">Explorar catálogo <ArrowRight aria-hidden="true" /></Link></div>
           <div className="pc-product-grid">
-            {opportunities.map((product) => {
+            {opportunities.map((product, index) => {
               const offer = bestOffer(product);
               const image = resolveProductImage(product);
               const saving = Math.max(0, product.maxPrice - product.minPrice);
+              const featured = index === 0;
               return (
-                <article className="pc-product-card" key={String(product.id)}>
+                <article className={`pc-product-card${featured ? " is-featured" : ""}`} key={String(product.id)}>
                   <button className="pc-product-open" type="button" onClick={() => setSelectedProduct(product)} aria-label={`Abrir comparação de ${product.name}`}>
-                    <span className="pc-product-media">{image ? <img src={image} alt={product.name} loading="lazy" /> : <PackageSearch aria-hidden="true" />}</span>
+                    <span className="pc-product-media">
+                      {featured && <span className="pc-product-featured-label"><Sparkles aria-hidden="true" /> Maior economia da seleção</span>}
+                      {image ? <img src={image} alt={product.name} loading="lazy" /> : <PackageSearch aria-hidden="true" />}
+                    </span>
                     <span className="pc-product-info"><small>{[product.brand, product.size].filter(Boolean).join(" · ")}</small><strong>{product.name}</strong></span>
                   </button>
                   <div className="pc-price-line"><span><small>Menor preço</small><strong>{money(product.minPrice)}</strong></span>{saving > 0 && <em>diferença de {money(saving)}</em>}</div>
