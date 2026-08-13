@@ -24,6 +24,9 @@ import {
   Store,
   Sun,
   Tag,
+  Utensils,
+  IceCream,
+  Pizza,
   X,
 } from "lucide-react";
 import { buildCatalog, type CatalogPayload, type Product } from "../data/catalog";
@@ -383,6 +386,18 @@ export function HomePremium() {
               <Link to="/buscar?cat=papelaria" className="pc-service-item">
                 <div className="pc-service-icon"><Smartphone size={20} /></div>
                 <span>Papelaria</span>
+              </Link>
+              <Link to="/buscar?cat=pizzaria" className="pc-service-item">
+                <div className="pc-service-icon"><Pizza size={20} /></div>
+                <span>Pizzaria</span>
+              </Link>
+              <Link to="/buscar?cat=lanchonete" className="pc-service-item">
+                <div className="pc-service-icon"><Utensils size={20} /></div>
+                <span>Lanchonete</span>
+              </Link>
+              <Link to="/buscar?cat=sorveteria" className="pc-service-item">
+                <div className="pc-service-icon"><IceCream size={20} /></div>
+                <span>Sorveteria</span>
               </Link>
             </div>
           </div>
