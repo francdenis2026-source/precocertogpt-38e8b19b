@@ -927,25 +927,26 @@
 
 .pc-ad-content h2 {
   color: #fff !important;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height: 1.05;
-  margin-bottom: 20px;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.4rem, 2.5vw, 2rem); /* Smaller font size */
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.03em;
 }
 
 .pc-ad-content p {
   color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  line-height: 1.6;
-  max-width: 520px;
-  margin-bottom: 32px;
+  font-size: clamp(0.85rem, 1vw, 0.95rem); /* Smaller font size */
+  line-height: 1.5;
+  max-width: 480px;
+  margin-bottom: 20px;
 }
 
 .pc-ad-stats {
   display: flex;
-  gap: 40px;
-  margin-bottom: 40px;
+  gap: 32px;
+  margin-bottom: 24px;
 }
+
 
 .pc-ad-stat {
   display: flex;
