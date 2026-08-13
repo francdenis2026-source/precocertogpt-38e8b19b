@@ -343,6 +343,49 @@ export function HomePremium() {
             </div>
           </div>
         </section>
+        
+        <section className="pc-services-strip">
+          <div className="pc-shell">
+            <div className="pc-services-scroll">
+              <Link to="/buscar?cat=conveniencia" className="pc-service-item">
+                <div className="pc-service-icon"><Clock3 size={20} /></div>
+                <span>Conveniência</span>
+              </Link>
+              <Link to="/buscar?cat=padaria" className="pc-service-item">
+                <div className="pc-service-icon"><ShoppingBasket size={20} /></div>
+                <span>Padaria</span>
+              </Link>
+              <Link to="/buscar?cat=açougue" className="pc-service-item">
+                <div className="pc-service-icon"><Tag size={20} /></div>
+                <span>Açougue</span>
+              </Link>
+              <Link to="/farmacias" className="pc-service-item">
+                <div className="pc-service-icon"><HeartPulse size={20} /></div>
+                <span>Farmácia</span>
+              </Link>
+              <Link to="/estabelecimentos" className="pc-service-item">
+                <div className="pc-service-icon"><Store size={20} /></div>
+                <span>Lojas</span>
+              </Link>
+              <Link to="/buscar?cat=mercantil" className="pc-service-item">
+                <div className="pc-service-icon"><ShoppingCart size={20} /></div>
+                <span>Mercantil</span>
+              </Link>
+              <Link to="/buscar?cat=frutaria" className="pc-service-item">
+                <div className="pc-service-icon"><Sun size={20} /></div>
+                <span>Frutaria</span>
+              </Link>
+              <Link to="/dorinha-barroso" className="pc-service-item">
+                <div className="pc-service-icon"><BookOpen size={20} /></div>
+                <span>Livraria</span>
+              </Link>
+              <Link to="/buscar?cat=papelaria" className="pc-service-item">
+                <div className="pc-service-icon"><Smartphone size={20} /></div>
+                <span>Papelaria</span>
+              </Link>
+            </div>
+          </div>
+        </section>
 
 
         <section className="pc-hero" aria-labelledby="pc-title">
