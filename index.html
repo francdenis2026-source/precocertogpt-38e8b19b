@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/favicon.ico?v=6" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=6" sizes="1024x1024" />
     <link rel="manifest" href="/manifest.json" />
-    
+
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="PreçoCerto" />
@@ -26,6 +26,78 @@
     <meta name="twitter:title" content="PreçoCerto | Marketplace Local" />
     <meta name="twitter:description" content="Compare, escolha e compre perto de você." />
     <meta name="twitter:image" content="https://precocertogpt.lovable.app/social/preco-certo.png" />
+
+    <style>
+      /* Search result viewport polish — larger usable area, compact rows, keyboard-visible state. */
+      .pc-stable-search__panel {
+        top: 8px !important;
+        bottom: calc(100vh - var(--pc-hole-top) + 8px) !important;
+        height: auto !important;
+        max-height: none !important;
+      }
+
+      .pc-stable-search__header {
+        padding-top: 11px !important;
+        padding-bottom: 9px !important;
+      }
+
+      .pc-stable-search__header > button {
+        width: 38px !important;
+        height: 38px !important;
+      }
+
+      .pc-stable-search__body {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        overflow-y: auto !important;
+        overscroll-behavior: contain !important;
+        scrollbar-gutter: stable;
+        scroll-behavior: smooth;
+      }
+
+      .pc-stable-search__result {
+        min-height: 66px !important;
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+      }
+
+      .pc-stable-search__thumb {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+      .pc-stable-search__footer {
+        min-height: 44px !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+      }
+
+      .pc-stable-search__result.is-keyboard-active,
+      .pc-stable-search__result[aria-current="true"] {
+        background: linear-gradient(90deg, rgba(31,107,97,.16), rgba(31,107,97,.055)) !important;
+        box-shadow: inset 4px 0 0 #1f6b61 !important;
+        outline: 2px solid rgba(31,107,97,.22) !important;
+        outline-offset: -2px !important;
+      }
+
+      @media (max-width: 720px) {
+        .pc-stable-search__panel {
+          top: 6px !important;
+          bottom: calc(100dvh - var(--pc-hole-top) + 6px) !important;
+        }
+
+        .pc-stable-search__result {
+          min-height: 62px !important;
+          padding-top: 6px !important;
+          padding-bottom: 6px !important;
+        }
+
+        .pc-stable-search__thumb {
+          width: 42px !important;
+          height: 42px !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -62,6 +134,67 @@
           document.body.classList.remove("pc-search-input-active");
         });
       }, true);
+
+      (function () {
+        var keyboardIndex = -1;
+
+        function clearKeyboardState() {
+          var results = document.querySelectorAll(".pc-stable-search__result");
+          results.forEach(function (item) {
+            item.classList.remove("is-keyboard-active");
+            item.removeAttribute("aria-current");
+          });
+          keyboardIndex = -1;
+        }
+
+        function activateResult(results, nextIndex) {
+          if (!results.length) return;
+          results.forEach(function (item) {
+            item.classList.remove("is-keyboard-active");
+            item.removeAttribute("aria-current");
+          });
+
+          keyboardIndex = (nextIndex + results.length) % results.length;
+          var current = results[keyboardIndex];
+          current.classList.add("is-keyboard-active");
+          current.setAttribute("aria-current", "true");
+          current.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+        }
+
+        document.addEventListener("keydown", function (event) {
+          var input = document.querySelector("#pc-home-search");
+          var overlay = document.querySelector(".pc-stable-search");
+          if (!(input instanceof HTMLInputElement) || !overlay) return;
+          if (document.activeElement !== input) return;
+
+          var results = Array.prototype.slice.call(document.querySelectorAll(".pc-stable-search__result"));
+          if (!results.length) return;
+
+          if (event.key === "ArrowDown") {
+            event.preventDefault();
+            event.stopPropagation();
+            activateResult(results, keyboardIndex + 1);
+          } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            event.stopPropagation();
+            activateResult(results, keyboardIndex < 0 ? results.length - 1 : keyboardIndex - 1);
+          } else if (event.key === "Enter" && keyboardIndex >= 0) {
+            event.preventDefault();
+            event.stopPropagation();
+            var selected = results[keyboardIndex];
+            if (selected && typeof selected.click === "function") selected.click();
+          } else if (event.key === "Escape") {
+            clearKeyboardState();
+          }
+        }, true);
+
+        document.addEventListener("input", function (event) {
+          var target = event.target;
+          if (target instanceof HTMLInputElement && target.id === "pc-home-search") {
+            clearKeyboardState();
+          }
+        }, true);
+      })();
     </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
