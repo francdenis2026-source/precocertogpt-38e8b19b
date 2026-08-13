@@ -139,9 +139,19 @@ export function HomePremium() {
 
   useEffect(() => {
     let active = true;
+    setCatalogLoading(true);
     fetchCatalog()
-      .then((result) => { if (active) setCatalog(result); })
-      .finally(() => { if (active) setCatalogLoading(false); });
+      .then((result) => { 
+        if (active) {
+          setCatalog(result);
+        }
+      })
+      .catch(err => {
+        console.error("Failed to fetch catalog:", err);
+      })
+      .finally(() => { 
+        if (active) setCatalogLoading(false); 
+      });
     return () => { active = false; };
   }, []);
 
@@ -188,10 +198,14 @@ export function HomePremium() {
     return suggestProducts(catalog.products, query, 6).filter((product) => product.minPrice > 0);
   }, [catalog.products, query]);
 
-  const opportunities = useMemo(() => catalog.products
-    .filter((product) => product.minPrice > 0)
-    .sort((a, b) => (b.maxPrice - b.minPrice) - (a.maxPrice - a.minPrice))
-    .slice(0, 5), [catalog.products]);
+  const opportunities = useMemo(() => {
+    // We use a fixed sort here to avoid flickering on re-renders, 
+    // but the initial state might differ slightly from the fetched state.
+    return catalog.products
+      .filter((product) => product.minPrice > 0)
+      .sort((a, b) => (b.maxPrice - b.minPrice) - (a.maxPrice - a.minPrice))
+      .slice(0, 5);
+  }, [catalog.products]);
 
   const [comparisonIndex, setComparisonIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
