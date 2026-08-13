@@ -19,7 +19,6 @@ import "./pages/HomeCompactVibrant.css";
 import "./pages/HomeKowalskiComplete.css";
 import App from "./App";
 import { HourlyHomeProductRotation } from "./components/HourlyHomeProductRotation";
-import { HomepageSearchInputPolish } from "./components/HomepageSearchInputPolish";
 import { startPaymentNotifications } from "./lib/paymentNotifications";
 
 
@@ -35,7 +34,6 @@ startPaymentNotifications();
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
-    <HomepageSearchInputPolish />
     <HourlyHomeProductRotation />
   </StrictMode>,
 );

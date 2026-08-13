@@ -104,8 +104,8 @@ export default function App() {
         <BasketSessionFlow />
         <AuthorMerchantDashboardWelcome />
         <Routes>
-        <Route path="/" element={<HomePremium />} />
-        <Route path="/categoria/:category" element={<CategoryPage />} />
+          <Route path="/" element={<HomePremium />} />
+          <Route path="/categoria/:category" element={<CategoryPage />} />
           <Route path="/buscar" element={<SmartCompareSearchProMax />} />
           <Route path="/favoritos" element={<SavedFavoritesPage />} />
           <Route path="/estabelecimentos" element={<EstablishmentsMarketplacePage />} />
