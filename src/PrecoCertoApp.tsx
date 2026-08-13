@@ -560,7 +560,7 @@ function Header({ basketCount, favoritesCount, user, onLogout, products, favorit
         })}
       </nav>
       <div className="header-actions">
-        <a className="icon-button header-space-link" href={accountSpace.href} aria-label={accountSpace.label} title={accountSpace.label}>{accountSpace.kind==="admin"?<ShieldCheck size={19}/>:<Store size={19}/>}<span>{accountSpace.label}</span></a>
+        <a className="icon-button header-space-link" href={accountSpace.href} aria-label={accountSpace.label} title={accountSpace.label}>{accountSpace.kind==="admin"?<ShieldCheck size={18}/>:accountSpace.kind==="merchant"?<Store size={18}/>:<UserRound size={18}/>}<span>{accountSpace.label}</span></a>
         
         <a className="icon-button header-action-button header-search-button" href="/buscar" aria-label="Pesquisar produtos" title="Buscar produtos"><Search size={20} aria-hidden="true" /></a>
         
@@ -639,7 +639,11 @@ function Header({ basketCount, favoritesCount, user, onLogout, products, favorit
         <button className="drawer-backdrop" aria-label="Fechar menu" onClick={() => setOpen(false)} tabIndex={-1} />
         <div className="drawer-panel">
           <div className="drawer-head">
-            <ThemeToggle/>
+            <div className="drawer-actions">
+              <a className="icon-button" href={accountSpace.href} title={accountSpace.label} onClick={() => setOpen(false)}>
+                {accountSpace.kind==="admin"?<ShieldCheck size={20}/>:accountSpace.kind==="merchant"?<Store size={20}/>:<UserRound size={20}/>}
+              </a>
+            </div>
 
             <button className="icon-button" onClick={() => setOpen(false)} aria-label="Fechar menu de navegação">
               <X aria-hidden="true" />
