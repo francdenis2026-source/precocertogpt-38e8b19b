@@ -106,14 +106,23 @@ const productIdentity = (product: ProductRow) => product.barcode
 /**
  * O PostgREST limita o número de linhas devolvidas por requisição. Lemos em
  * páginas para que produtos e preços acima desse limite também apareçam.
+ *
+ * A paginação exige uma ordenação estável: sem um ORDER BY único o banco pode
+ * devolver as mesmas linhas em ordens diferentes entre chamadas, causando
+ * variação no conjunto exibido. Por isso ordenamos sempre por uma coluna única.
  */
-async function fetchAllRows(table: "establishments" | "products" | "prices", columns: string) {
+async function fetchAllRows(
+  table: "establishments" | "products" | "prices",
+  columns: string,
+  orderColumn: string,
+) {
   const rows: unknown[] = [];
 
   for (let from = 0; ; from += DATABASE_PAGE_SIZE) {
     const response = await supabase!
       .from(table)
       .select(columns)
+      .order(orderColumn, { ascending: true })
       .range(from, from + DATABASE_PAGE_SIZE - 1);
 
     if (response.error) return { data: rows, error: response.error };
