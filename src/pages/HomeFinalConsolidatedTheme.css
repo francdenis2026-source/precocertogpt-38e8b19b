@@ -2,18 +2,30 @@
 @import "./HomeNeoHero.css";
 @import "./HomeNeoSections.css";
 
-/* Final backdrop visibility pass: one photograph across the complete homepage. */
-.pc-home::before{background-image:url('/marketplace-local-profissional-v2.webp')!important;background-position:center 42%!important;background-size:cover!important;background-repeat:no-repeat!important;filter:saturate(.8) contrast(1.06) brightness(.9)!important;opacity:1!important}
-.pc-home::after{background:linear-gradient(180deg,rgba(244,240,247,.48),rgba(244,240,247,.62) 28%,rgba(244,240,247,.70) 72%,rgba(244,240,247,.58))!important}
-[data-theme="dark"] .pc-home::after{background:linear-gradient(180deg,rgba(18,13,29,.48),rgba(18,13,29,.60) 30%,rgba(18,13,29,.68))!important}
-.pc-home :is(.pc-dynamic-ad,.pc-action-strip,.pc-categories,.pc-opportunities,.pc-stores,.pc-how){background:transparent!important}
-.pc-home .pc-hero,.pc-home .pc-compare-section,.pc-home .pc-basket-section,.pc-home .pc-commercial{background:transparent!important}
-.pc-home .pc-hero::before,.pc-home .pc-basket-section::before,.pc-home .pc-commercial::before{background-image:none!important;background:transparent!important;filter:none!important}
-.pc-home .pc-hero::after{background:linear-gradient(90deg,rgba(23,17,38,.76),rgba(23,17,38,.58) 43%,rgba(42,29,62,.28) 72%,rgba(42,29,62,.05))!important}
-.pc-home .pc-compare-section::before{background-image:none!important;background:linear-gradient(105deg,rgba(23,17,38,.72),rgba(42,29,62,.54) 58%,rgba(42,29,62,.14))!important}
-.pc-home .pc-basket-section::after{background:linear-gradient(90deg,rgba(23,17,38,.72),rgba(42,29,62,.52) 56%,rgba(42,29,62,.14))!important}
-.pc-home .pc-commercial::after{background:linear-gradient(90deg,rgba(23,17,38,.74),rgba(42,29,62,.52) 55%,rgba(42,29,62,.08))!important}
-.pc-home .pc-how::before{background:linear-gradient(135deg,rgba(255,253,249,.52),rgba(241,235,244,.46))!important}
-.pc-home :is(.pc-ad-card,.pc-action-strip-inner,.pc-category,.pc-product-card,.pc-store-card,.pc-how-step){background:rgba(255,253,249,.84)!important;backdrop-filter:blur(8px)}
-[data-theme="dark"] .pc-home :is(.pc-ad-card,.pc-action-strip-inner,.pc-category,.pc-product-card,.pc-store-card,.pc-how-step){background:rgba(33,24,46,.76)!important}
-@media(max-width:720px){.pc-home::after{background:linear-gradient(180deg,rgba(244,240,247,.52),rgba(244,240,247,.66))!important}[data-theme="dark"] .pc-home::after{background:linear-gradient(180deg,rgba(18,13,29,.52),rgba(18,13,29,.66))!important}.pc-home .pc-hero::after{background:linear-gradient(180deg,rgba(23,17,38,.68),rgba(23,17,38,.44) 55%,rgba(23,17,38,.70))!important}}
+/* GPT Taste final calibration — specific commerce identity, no AI-purple. */
+html body .pc-home.pc-home :is(.pc-hero,.pc-compare-section,.pc-basket-section,.pc-commercial){background:transparent!important}
+html body .pc-home.pc-home .pc-hero::before,html body .pc-home.pc-home .pc-basket-section::before,html body .pc-home.pc-home .pc-commercial::before{background:none!important;filter:none!important}
+html body .pc-home.pc-home .pc-hero::after{background:linear-gradient(90deg,rgba(9,21,37,.72),rgba(15,27,45,.52) 46%,rgba(15,27,45,.16) 78%,rgba(15,27,45,.03))!important}
+html body .pc-home.pc-home .pc-compare-section::before,html body .pc-home.pc-home .pc-basket-section::after,html body .pc-home.pc-home .pc-commercial::after{background:linear-gradient(90deg,rgba(9,21,37,.66),rgba(15,27,45,.44) 58%,rgba(15,27,45,.08))!important}
+html body .pc-home.pc-home .pc-header{background:rgba(9,21,37,.90)!important;border-bottom-color:rgba(255,255,255,.10)!important;box-shadow:0 10px 32px rgba(4,10,18,.16)!important}
+html body .pc-home.pc-home .pc-header.is-scrolled{background:rgba(9,21,37,.78)!important}
+html body .pc-home.pc-home .pc-nav a::after{background:#b84a22!important}
+html body .pc-home.pc-home :is(.pc-merchant,.pc-search button,.pc-compare-button,.pc-basket-copy>a,.pc-how-head>a){background:#b84a22!important;color:#fff!important;box-shadow:none!important}
+html body .pc-home.pc-home :is(.pc-merchant,.pc-search button,.pc-compare-button,.pc-basket-copy>a,.pc-how-head>a):hover{background:#973918!important}
+html body .pc-home.pc-home .pc-kicker{color:#f3c3ad!important}html body .pc-home.pc-home .pc-hero h1 em{color:#f0a17d!important}html body .pc-home.pc-home .pc-hero-copy>p{color:#e1e6ec!important}
+html body .pc-home.pc-home .pc-search{border-radius:12px!important;box-shadow:0 14px 34px rgba(4,10,18,.22)!important}html body .pc-home.pc-home .pc-search:focus-within{border-color:#d9825c!important;box-shadow:0 0 0 4px rgba(184,74,34,.16),0 14px 34px rgba(4,10,18,.24)!important}html body .pc-home.pc-home .pc-search input{caret-color:#b84a22!important}
+html body .pc-home.pc-home :is(.pc-ad-card,.pc-action-strip-inner,.pc-category,.pc-product-card,.pc-store-card,.pc-how-step,.pc-compare-product){background:rgba(255,253,248,.80)!important;border-color:rgba(23,32,51,.12)!important;color:#172033!important;backdrop-filter:blur(9px) saturate(112%)!important;box-shadow:0 8px 22px rgba(15,27,45,.07)!important}
+html body .pc-home.pc-home :is(.pc-category,.pc-product-card,.pc-store-card,.pc-how-step,.pc-compare-product) :is(strong,h3,h4){color:#172033!important}html body .pc-home.pc-home :is(.pc-category,.pc-product-card,.pc-store-card,.pc-how-step,.pc-compare-product) :is(p,small){color:#686b70!important}
+html body .pc-home.pc-home :is(.pc-category-icon,.pc-store-avatar,.pc-how-icon,.pc-ad-badge){background:#f8e8df!important;color:#b84a22!important}
+html body .pc-home.pc-home .pc-product-media{background:linear-gradient(145deg,rgba(255,253,248,.96),rgba(236,231,221,.90))!important;border-color:rgba(23,32,51,.08)!important}html body .pc-home.pc-home .pc-price-line strong,html body .pc-home.pc-home .pc-product-price{color:#187a58!important}
+html body .pc-home.pc-home .pc-heading-row>a{background:#f8e8df!important;color:#7f3016!important}
+html body .pc-home.pc-home .pc-how::before{background:linear-gradient(135deg,rgba(255,253,248,.42),rgba(236,231,221,.34))!important;border:1px solid rgba(255,255,255,.32)!important}html body .pc-home.pc-home .pc-how-flow::before{background:linear-gradient(90deg,#b84a22,rgba(184,74,34,.38),rgba(15,27,45,.36))!important}
+html body .pc-home.pc-home :is(.pc-how-query>i,.pc-how-bars .is-best i,.pc-how-result>span){background:#b84a22!important}html body .pc-home.pc-home :is(.pc-how-bars .is-best small,.pc-how-result>svg){color:#b84a22!important}html body .pc-home.pc-home .pc-how-result{background:#f8e8df!important}html body .pc-home.pc-home .pc-how-result strong{color:#172033!important}
+html body .pc-home.pc-home .pc-footer,html body:has(.pc-home) .pc-footer{background:#091525!important;color:#d9e0e7!important}
+html body .pc-home.pc-home :is(button,a,input):focus-visible{outline:3px solid rgba(184,74,34,.50)!important;outline-offset:3px!important}
+html[data-theme="dark"] body .pc-home.pc-home :is(.pc-ad-card,.pc-action-strip-inner,.pc-category,.pc-product-card,.pc-store-card,.pc-how-step,.pc-compare-product){background:rgba(17,27,42,.80)!important;border-color:#2d3b50!important;color:#f7f2e8!important;box-shadow:0 10px 28px rgba(0,0,0,.20)!important}
+html[data-theme="dark"] body .pc-home.pc-home :is(.pc-category,.pc-product-card,.pc-store-card,.pc-how-step,.pc-compare-product) :is(strong,h3,h4){color:#f7f2e8!important}html[data-theme="dark"] body .pc-home.pc-home :is(.pc-category,.pc-product-card,.pc-store-card,.pc-how-step,.pc-compare-product) :is(p,small){color:#b8b2a8!important}
+html[data-theme="dark"] body .pc-home.pc-home :is(.pc-category-icon,.pc-store-avatar,.pc-how-icon,.pc-ad-badge){background:rgba(224,120,75,.14)!important;color:#e88961!important}html[data-theme="dark"] body .pc-home.pc-home .pc-product-media{background:linear-gradient(145deg,rgba(18,30,47,.96),rgba(24,37,57,.92))!important;border-color:#2d3b50!important}
+html[data-theme="dark"] body .pc-home.pc-home .pc-how::before{background:linear-gradient(135deg,rgba(17,27,42,.44),rgba(24,37,57,.34))!important;border-color:rgba(255,255,255,.08)!important}html[data-theme="dark"] body .pc-home.pc-home .pc-how-demo{background:#182539!important}html[data-theme="dark"] body .pc-home.pc-home .pc-how-result{background:rgba(224,120,75,.14)!important}html[data-theme="dark"] body .pc-home.pc-home .pc-how-result strong{color:#f7f2e8!important}
+@media(hover:hover) and (pointer:fine){html body .pc-home.pc-home :is(.pc-category,.pc-product-card,.pc-store-card,.pc-how-step):hover{transform:translateY(-2px)!important;border-color:rgba(184,74,34,.30)!important;box-shadow:0 14px 32px rgba(15,27,45,.12)!important}}
+@media(max-width:720px){html body .pc-home.pc-home .pc-hero::after{background:linear-gradient(180deg,rgba(9,21,37,.66),rgba(9,21,37,.38) 56%,rgba(9,21,37,.72))!important}}
