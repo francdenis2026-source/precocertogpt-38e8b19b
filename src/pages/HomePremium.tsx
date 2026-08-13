@@ -29,7 +29,7 @@ import {
   Pizza,
   X,
 } from "lucide-react";
-import { buildCatalog, type CatalogPayload, type Product } from "../data/catalog";
+import { buildCatalog, type CatalogPayload, type Product, verifiedDatasetMetrics } from "../data/catalog";
 import { fetchCatalog } from "../data/remoteCatalog";
 import { resolveProductImage } from "../data/productImageResolver";
 import { suggestProducts } from "../lib/productSearch";
@@ -73,7 +73,7 @@ export function HomePremium() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [catalog, setCatalog] = useState<CatalogPayload>(initialCatalog);
+  const [catalog, setCatalog] = useState<CatalogPayload>({ products: [], stores: [], metrics: verifiedDatasetMetrics, updatedAt: new Date().toISOString() });
   const [catalogLoading, setCatalogLoading] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeResult, setActiveResult] = useState(-1);
@@ -122,6 +122,8 @@ export function HomePremium() {
       .fromTo(".pc-quick", { opacity: 0 }, { opacity: 1, duration: .28 }, "-=.2");
 
     gsap.utils.toArray<HTMLElement>(".pc-product-card").forEach((card, index) => {
+      // Usamos uma chave de animação única baseada no ID do produto para evitar problemas de reutilização
+      const productId = card.getAttribute("data-product-id");
       gsap.fromTo(card,
         { y: 26, opacity: .55, scale: .975 },
         {
@@ -501,7 +503,7 @@ export function HomePremium() {
               const saving = Math.max(0, product.maxPrice - product.minPrice);
               const featured = index === 0;
               return (
-                <article className={`pc-product-card${featured ? " is-featured" : ""}`} key={String(product.id)}>
+                <article className={`pc-product-card${featured ? " is-featured" : ""}`} key={`${String(product.id)}-${index}`} data-product-id={String(product.id)}>
                   <button className="pc-product-open" type="button" onClick={() => setSelectedProduct(product)} aria-label={`Abrir comparação de ${product.name}`}>
                     <span className="pc-product-media">
                       {featured && <span className="pc-product-featured-label"><Sparkles aria-hidden="true" /> Maior economia da seleção</span>}
@@ -553,7 +555,7 @@ export function HomePremium() {
                 <div className="pc-offer-list">
                   {comparisonOffers.length > 0 ? (
                     comparisonOffers.map((offer, idx) => (
-                      <div key={`${comparisonProduct.id}-${offer.establishmentId}-${idx}`} className={`pc-offer-row ${idx === 0 ? "is-best" : ""}`}>
+                      <div key={`${comparisonProduct.id}-${offer.establishmentId}`} className={`pc-offer-row ${idx === 0 ? "is-best" : ""}`}>
                         <span className="pc-offer-rank">{idx + 1}</span>
                         <span>
                           <strong>{offer.establishment}</strong>
@@ -580,7 +582,7 @@ export function HomePremium() {
           <div className="pc-heading pc-heading-row"><div><span>Comércio local</span><h2 id="pc-stores-title">Estabelecimentos para explorar.</h2></div><Link to="/estabelecimentos">Ver todos <ArrowRight aria-hidden="true" /></Link></div>
           <div className="pc-store-grid">
             {stores.map((store) => (
-              <Link className="pc-store-card" to={`/estabelecimento/${store.slug}`} key={String(store.id)}>
+              <Link className="pc-store-card" to={`/estabelecimento/${store.slug}`} key={String(store.id)} data-store-id={String(store.id)}>
                 <span className="pc-store-avatar" style={{ background: store.color }}><Store aria-hidden="true" /></span>
                 <span><strong>{store.name}</strong><small>{store.neighborhood || "Feijó, AC"}</small><em>{store.products} {store.products === 1 ? "produto" : "produtos"} no catálogo</em></span>
                 <ChevronRight aria-hidden="true" />
