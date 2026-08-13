@@ -1,4 +1,4 @@
-name: CI/CD
+name: GitHub CI/CD
 
 on:
   push:
@@ -31,9 +31,16 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
+      - name: Validate build artifacts
+        run: |
+          ls -R dist/
+          test -f dist/index.html
+          test -d dist/social
+
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          cname: www.precocerto.live
