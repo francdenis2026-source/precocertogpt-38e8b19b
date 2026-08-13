@@ -1,12 +1,128 @@
-/* Backdrop compatibility layer only. The active design remains in HomeNeo*.css. */
-html body .pc-home.pc-home::before{background-image:url('/marketplace-local-profissional-v2.webp')!important;background-position:center 42%!important;background-size:cover!important;background-repeat:no-repeat!important;filter:saturate(.82) contrast(1.06) brightness(.92)!important;opacity:1!important}
-html body .pc-home.pc-home::after{background:rgba(244,240,247,.54)!important}
-html[data-theme="dark"] body .pc-home.pc-home::after{background:rgba(18,13,29,.56)!important}
-html body .pc-home.pc-home :is(.pc-hero,.pc-compare-section,.pc-basket-section,.pc-commercial,.pc-dynamic-ad,.pc-action-strip,.pc-categories,.pc-opportunities,.pc-stores,.pc-how){background:transparent!important}
-html body .pc-home.pc-home .pc-hero::before,html body .pc-home.pc-home .pc-basket-section::before,html body .pc-home.pc-home .pc-commercial::before{background-image:none!important;background:transparent!important;filter:none!important}
-html body .pc-home.pc-home .pc-hero::after{background:linear-gradient(90deg,rgba(23,17,38,.70),rgba(42,29,62,.12))!important}
-html body .pc-home.pc-home .pc-compare-section::before,html body .pc-home.pc-home .pc-basket-section::after,html body .pc-home.pc-home .pc-commercial::after{background:linear-gradient(90deg,rgba(23,17,38,.66),rgba(42,29,62,.14))!important}
-html body .pc-home.pc-home .pc-how::before{background:linear-gradient(135deg,rgba(255,253,249,.46),rgba(241,235,244,.40))!important}
-html body .pc-home.pc-home :is(.pc-ad-card,.pc-action-strip-inner,.pc-category,.pc-product-card,.pc-store-card,.pc-how-step){background:rgba(255,253,249,.82)!important;backdrop-filter:blur(8px)}
-html[data-theme="dark"] body .pc-home.pc-home :is(.pc-ad-card,.pc-action-strip-inner,.pc-category,.pc-product-card,.pc-store-card,.pc-how-step){background:rgba(33,24,46,.74)!important}
-@media(max-width:720px){html body .pc-home.pc-home::before{background-position:center 38%!important;background-attachment:scroll!important}html body .pc-home.pc-home::after{background:rgba(244,240,247,.60)!important}html[data-theme="dark"] body .pc-home.pc-home::after{background:rgba(18,13,29,.62)!important}}
+/* Full-page backdrop compatibility layer. Active component styling remains in HomeNeo*.css. */
+
+html body .pc-home.pc-home {
+  background-color: #f4f0f7 !important;
+  background-image:
+    linear-gradient(rgba(244,240,247,.28), rgba(244,240,247,.34)),
+    url('/marketplace-local-profissional-v2.webp') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+html[data-theme="dark"] body .pc-home.pc-home {
+  background-color: #120d1d !important;
+  background-image:
+    linear-gradient(rgba(18,13,29,.40), rgba(18,13,29,.48)),
+    url('/marketplace-local-profissional-v2.webp') !important;
+}
+
+/* The image now lives on .pc-home itself; disable duplicate backdrop layers. */
+html body .pc-home.pc-home::before,
+html body .pc-home.pc-home::after {
+  background: transparent !important;
+  background-image: none !important;
+  filter: none !important;
+  opacity: 0 !important;
+}
+
+/* All major homepage bands reveal the same full-page photograph. */
+html body .pc-home.pc-home :is(
+  .pc-hero,
+  .pc-dynamic-ad,
+  .pc-action-strip,
+  .pc-categories,
+  .pc-opportunities,
+  .pc-compare-section,
+  .pc-stores,
+  .pc-basket-section,
+  .pc-how,
+  .pc-commercial
+) {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Remove legacy per-section photographs and opaque decorative panels. */
+html body .pc-home.pc-home .pc-hero::before,
+html body .pc-home.pc-home .pc-basket-section::before,
+html body .pc-home.pc-home .pc-commercial::before {
+  background: transparent !important;
+  background-image: none !important;
+  filter: none !important;
+}
+
+/* Dark feature bands remain readable while still revealing the page image. */
+html body .pc-home.pc-home .pc-hero::after {
+  background: linear-gradient(90deg,rgba(23,17,38,.56) 0%,rgba(23,17,38,.42) 46%,rgba(42,29,62,.15) 78%,rgba(42,29,62,.04) 100%) !important;
+}
+
+html body .pc-home.pc-home .pc-compare-section::before,
+html body .pc-home.pc-home .pc-basket-section::after,
+html body .pc-home.pc-home .pc-commercial::after {
+  background: linear-gradient(90deg,rgba(23,17,38,.52) 0%,rgba(42,29,62,.36) 58%,rgba(42,29,62,.08) 100%) !important;
+}
+
+/* The how-it-works decorative sheet becomes glass, not a solid block. */
+html body .pc-home.pc-home .pc-how::before {
+  background: linear-gradient(135deg,rgba(255,253,249,.34),rgba(241,235,244,.26)) !important;
+  border: 1px solid rgba(255,255,255,.34) !important;
+  backdrop-filter: blur(7px) !important;
+}
+
+html[data-theme="dark"] body .pc-home.pc-home .pc-how::before {
+  background: linear-gradient(135deg,rgba(33,24,46,.38),rgba(42,29,62,.30)) !important;
+  border-color: rgba(255,255,255,.08) !important;
+}
+
+/* Content cards stay legible but no longer form a wall of solid color. */
+html body .pc-home.pc-home :is(
+  .pc-ad-card,
+  .pc-action-strip-inner,
+  .pc-category,
+  .pc-product-card,
+  .pc-store-card,
+  .pc-how-step,
+  .pc-compare-product
+) {
+  background: rgba(255,253,249,.76) !important;
+  backdrop-filter: blur(10px) saturate(118%) !important;
+}
+
+html[data-theme="dark"] body .pc-home.pc-home :is(
+  .pc-ad-card,
+  .pc-action-strip-inner,
+  .pc-category,
+  .pc-product-card,
+  .pc-store-card,
+  .pc-how-step,
+  .pc-compare-product
+) {
+  background: rgba(33,24,46,.70) !important;
+}
+
+/* Small internal demos can remain solid enough for data legibility. */
+html body .pc-home.pc-home :is(.pc-product-media,.pc-how-demo,.pc-how-result) {
+  backdrop-filter: blur(6px) !important;
+}
+
+@media (max-width: 720px) {
+  html body .pc-home.pc-home {
+    background-attachment: scroll !important;
+    background-position: 54% top !important;
+    background-image:
+      linear-gradient(rgba(244,240,247,.34), rgba(244,240,247,.40)),
+      url('/marketplace-local-profissional-v2.webp') !important;
+  }
+
+  html[data-theme="dark"] body .pc-home.pc-home {
+    background-image:
+      linear-gradient(rgba(18,13,29,.46), rgba(18,13,29,.52)),
+      url('/marketplace-local-profissional-v2.webp') !important;
+  }
+
+  html body .pc-home.pc-home .pc-hero::after {
+    background: linear-gradient(180deg,rgba(23,17,38,.52),rgba(23,17,38,.34) 58%,rgba(23,17,38,.58)) !important;
+  }
+}
