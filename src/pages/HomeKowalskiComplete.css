@@ -485,6 +485,8 @@ body:has(.pc-home) .pc-home > main {
 .pc-home .pc-opportunities {
   position: relative;
   isolation: isolate;
+  padding-top: 30px;
+  padding-bottom: 22px;
 }
 
 .pc-home .pc-opportunities::before {
@@ -502,6 +504,7 @@ body:has(.pc-home) .pc-home > main {
 
 .pc-home .pc-opportunities .pc-heading-row {
   align-items: end;
+  margin-bottom: 12px;
 }
 
 .pc-home .pc-opportunities .pc-heading-row p {
@@ -513,10 +516,10 @@ body:has(.pc-home) .pc-home > main {
 }
 
 .pc-home .pc-product-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(186px, auto));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: auto;
   grid-auto-flow: dense;
-  gap: 12px;
+  gap: 10px;
 }
 
 .pc-home .pc-product-card {
@@ -524,6 +527,39 @@ body:has(.pc-home) .pc-home > main {
   border: 1px solid rgba(10, 57, 51, .11);
   background: rgba(255, 255, 255, .9);
   box-shadow: 0 12px 32px rgba(8, 43, 37, .08);
+}
+
+.pc-home .pc-opportunities .pc-product-open {
+  margin-top: 8px;
+}
+
+.pc-home .pc-opportunities .pc-product-media {
+  height: 104px;
+  padding: 8px;
+}
+
+.pc-home .pc-opportunities .pc-product-media img {
+  max-height: 88px;
+}
+
+.pc-home .pc-opportunities .pc-product-info {
+  min-height: 40px;
+  padding-block: 6px 4px;
+}
+
+.pc-home .pc-opportunities .pc-price-line {
+  min-height: 38px;
+  padding-block: 5px;
+}
+
+.pc-home .pc-opportunities .pc-store-line {
+  min-height: 27px;
+  padding-block: 3px;
+}
+
+.pc-home .pc-opportunities .pc-compare-button {
+  min-height: 44px;
+  margin-bottom: 8px;
 }
 
 .pc-home .pc-product-card:nth-child(2) { background: #fff2ec; }
@@ -595,7 +631,7 @@ body:has(.pc-home) .pc-home > main {
 
 .pc-home .pc-product-card.is-featured {
   grid-column: span 2;
-  grid-row: span 2;
+  grid-row: auto;
   background:
     radial-gradient(circle at 72% 25%, rgba(255, 198, 91, .28), transparent 26%),
     linear-gradient(145deg, #073f38, #0a5a4e);
@@ -605,12 +641,12 @@ body:has(.pc-home) .pc-home > main {
 }
 
 .pc-home .pc-product-card.is-featured .pc-product-open {
-  margin-top: 14px;
+  margin-top: 8px;
 }
 
 .pc-home .pc-product-card.is-featured .pc-product-media {
   position: relative;
-  height: 238px;
+  height: 156px;
   overflow: hidden;
   background:
     radial-gradient(circle at 50% 48%, rgba(255, 255, 255, .98), rgba(239, 247, 239, .78) 42%, rgba(153, 213, 190, .16) 72%),
@@ -629,7 +665,7 @@ body:has(.pc-home) .pc-home > main {
 
 .pc-home .pc-product-card.is-featured .pc-product-media img {
   z-index: 1;
-  max-height: 202px;
+  max-height: 136px;
   filter: drop-shadow(0 20px 20px rgba(4, 34, 30, .22));
 }
 
@@ -680,17 +716,20 @@ body:has(.pc-home) .pc-home > main {
     grid-template-rows: auto;
   }
   .pc-home .pc-product-card.is-featured { grid-column: span 2; grid-row: auto; }
-  .pc-home .pc-product-card.is-featured .pc-product-media { height: 214px; }
+  .pc-home .pc-product-card.is-featured .pc-product-media { height: 150px; }
 }
 
 @media (max-width: 720px) {
   .pc-home .pc-hero::before { background-position: 64% top; }
   .pc-home .pc-opportunities::before { inset-inline: -10px; border-radius: 20px; }
+  .pc-home .pc-opportunities { padding-block: 24px 18px; }
   .pc-home .pc-opportunities .pc-heading-row { align-items: start; }
   .pc-home .pc-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .pc-home .pc-product-card.is-featured { grid-column: 1 / -1; }
-  .pc-home .pc-product-card.is-featured .pc-product-media { height: 186px; }
-  .pc-home .pc-product-card.is-featured .pc-product-media img { max-height: 158px; }
+  .pc-home .pc-opportunities .pc-product-media { height: 96px; }
+  .pc-home .pc-opportunities .pc-product-media img { max-height: 80px; }
+  .pc-home .pc-product-card.is-featured .pc-product-media { height: 138px; }
+  .pc-home .pc-product-card.is-featured .pc-product-media img { max-height: 118px; }
 }
 
 /* Header and navigation */
