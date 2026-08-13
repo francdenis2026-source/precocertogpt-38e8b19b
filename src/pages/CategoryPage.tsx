@@ -128,7 +128,27 @@ export function CategoryPage() {
             
             <div className="add-review">
               <h4>Deixe sua avaliação</h4>
-              <form className="review-form" onSubmit={(e) => { e.preventDefault(); alert('Avaliação enviada com sucesso!'); }}>
+              <form className="review-form" onSubmit={async (e) => { 
+                e.preventDefault(); 
+                const form = e.currentTarget;
+                const name = (form.elements[0] as HTMLInputElement).value;
+                const rating = parseInt((form.elements[1] as HTMLSelectElement).value);
+                const comment = (form.elements[2] as HTMLTextAreaElement).value;
+                
+                const { submitReview } = await import("../lib/adminFeedback");
+                const { error } = await submitReview({
+                  category: category || "geral",
+                  author_name: name,
+                  rating,
+                  comment
+                });
+
+                if (error) alert("Erro ao enviar: " + error);
+                else {
+                  alert("Avaliação enviada para moderação!");
+                  form.reset();
+                }
+              }}>
                 <div className="form-row">
                   <input type="text" placeholder="Seu nome" required />
                   <select required defaultValue="">
