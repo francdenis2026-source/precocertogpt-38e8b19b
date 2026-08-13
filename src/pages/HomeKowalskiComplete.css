@@ -1,0 +1,147 @@
+/* Homepage — complete Emil Kowalski interaction pass. */
+.pc-home {
+  --pc-k-fast: 120ms;
+  --pc-k-normal: 180ms;
+  --pc-k-slow: 240ms;
+  --pc-k-out: cubic-bezier(.23, 1, .32, 1);
+  --pc-k-in-out: cubic-bezier(.77, 0, .175, 1);
+}
+
+/* Header and navigation */
+.pc-home .pc-nav a,
+.pc-home .pc-icon-button,
+.pc-home .pc-menu-button,
+.pc-home .pc-merchant {
+  transition-duration: var(--pc-k-normal);
+  transition-timing-function: var(--pc-k-out);
+}
+.pc-home .pc-nav a::after { transition: transform var(--pc-k-normal) var(--pc-k-out); }
+.pc-home .pc-logo,
+.pc-home .pc-nav a,
+.pc-home .pc-footer nav a { transition: opacity var(--pc-k-fast) ease, transform var(--pc-k-fast) var(--pc-k-out); }
+.pc-home .pc-logo:active,
+.pc-home .pc-nav a:active,
+.pc-home .pc-footer nav a:active { opacity: .76; transform: scale(.985); }
+
+/* Hero search: instant feedback with origin-aware interruptible popovers. */
+.pc-home .pc-search { transition: border-color var(--pc-k-normal) ease, box-shadow var(--pc-k-normal) ease; }
+.pc-home .pc-search button,
+.pc-home .pc-quick button { transition: background-color var(--pc-k-normal) ease, border-color var(--pc-k-normal) ease, transform var(--pc-k-fast) var(--pc-k-out); }
+.pc-home .pc-search button:active,
+.pc-home .pc-quick button:active { transform: scale(.97); }
+.pc-home .pc-results,
+.pc-home .pc-mobile-menu {
+  animation: none;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transform-origin: top center;
+  transition: opacity var(--pc-k-normal) ease, transform var(--pc-k-normal) var(--pc-k-out);
+  @starting-style {
+    opacity: 0;
+    transform: translateY(-5px) scale(.985);
+  }
+}
+.pc-home .pc-result { transition: background-color var(--pc-k-fast) ease, color var(--pc-k-fast) ease; }
+.pc-home .pc-result:active { background: #efe5dc; }
+
+/* Utility rail and editorial links */
+.pc-home .pc-action-strip a,
+.pc-home .pc-heading-row > a,
+.pc-home .pc-how-head > a {
+  transition: background-color var(--pc-k-normal) ease, color var(--pc-k-normal) ease, transform var(--pc-k-fast) var(--pc-k-out), box-shadow var(--pc-k-normal) ease;
+}
+.pc-home .pc-action-strip a:active,
+.pc-home .pc-heading-row > a:active,
+.pc-home .pc-how-head > a:active { transform: scale(.975); }
+.pc-home .pc-heading-row > a svg,
+.pc-home .pc-how-head > a svg { transition: transform var(--pc-k-normal) var(--pc-k-out); }
+
+/* Categories, products and stores */
+.pc-home .pc-category,
+.pc-home .pc-product-card,
+.pc-home .pc-store-card {
+  transition: transform var(--pc-k-slow) var(--pc-k-out), box-shadow var(--pc-k-slow) ease, border-color var(--pc-k-normal) ease, background-color var(--pc-k-normal) ease;
+}
+.pc-home .pc-category:active,
+.pc-home .pc-product-card:active,
+.pc-home .pc-store-card:active { transform: scale(.985); }
+.pc-home .pc-product-card .pc-product-media img,
+.pc-home .pc-product-card .pc-product-image img { transition: transform var(--pc-k-slow) var(--pc-k-out), filter var(--pc-k-slow) ease; }
+.pc-home .pc-compare-button {
+  transition: transform var(--pc-k-fast) var(--pc-k-out), background-color var(--pc-k-normal) ease, color var(--pc-k-normal) ease, border-color var(--pc-k-normal) ease;
+}
+.pc-home .pc-compare-button:active { transform: scale(.97); }
+
+/* Comparison showcase */
+.pc-home .pc-compare-copy button,
+.pc-home .pc-basket-copy > a,
+.pc-home .pc-commercial-copy > a {
+  transition: transform var(--pc-k-fast) var(--pc-k-out), background-color var(--pc-k-normal) ease, box-shadow var(--pc-k-normal) ease;
+}
+.pc-home .pc-compare-copy button:active,
+.pc-home .pc-basket-copy > a:active,
+.pc-home .pc-commercial-copy > a:active { transform: scale(.97); }
+.pc-home .pc-compare-product {
+  transition: opacity var(--pc-k-slow) ease, filter var(--pc-k-slow) ease, box-shadow var(--pc-k-slow) ease, transform var(--pc-k-slow) var(--pc-k-out);
+}
+.pc-home .pc-compare-product-image img { transition: transform var(--pc-k-slow) var(--pc-k-out), filter var(--pc-k-slow) ease; }
+
+/* How it works: explanatory motion only on precise pointers. */
+.pc-home .pc-how-step { transition: transform var(--pc-k-slow) var(--pc-k-out), box-shadow var(--pc-k-slow) ease; }
+.pc-home .pc-how-icon { transition: transform var(--pc-k-normal) var(--pc-k-out), background-color var(--pc-k-normal) ease; }
+.pc-home .pc-how-step:active { transform: scale(.99); }
+
+/* Dialog: centered by design, controls remain fast and interruptible. */
+.pc-home .pc-modal { animation-duration: var(--pc-k-normal); }
+.pc-home .pc-dialog { animation-duration: var(--pc-k-slow); transform-origin: center; }
+.pc-home .pc-dialog-close {
+  transition: transform var(--pc-k-normal) var(--pc-k-out), background-color var(--pc-k-normal) ease, color var(--pc-k-normal) ease;
+}
+.pc-home .pc-dialog-close:active { transform: scale(.94); }
+.pc-home .pc-dialog-media img { transition: transform var(--pc-k-slow) var(--pc-k-out), filter var(--pc-k-slow) ease; }
+.pc-home .pc-dialog-offers > div { transition: transform var(--pc-k-fast) var(--pc-k-out), background-color var(--pc-k-normal) ease; }
+.pc-home .pc-dialog-actions a,
+.pc-home .pc-dialog-actions button {
+  transition: transform var(--pc-k-fast) var(--pc-k-out), background-color var(--pc-k-normal) ease, border-color var(--pc-k-normal) ease, color var(--pc-k-normal) ease;
+}
+.pc-home .pc-dialog-actions a:active,
+.pc-home .pc-dialog-actions button:active { transform: scale(.97); }
+
+/* Visible keyboard state follows geometry instead of element defaults. */
+.pc-home :is(a, button, input):focus-visible {
+  outline: 3px solid #ffb092;
+  outline-offset: 3px;
+}
+.pc-home .pc-search input:focus-visible { outline: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  .pc-home .pc-logo:hover { opacity: .88; }
+  .pc-home .pc-action-strip a:hover,
+  .pc-home .pc-heading-row > a:hover,
+  .pc-home .pc-how-head > a:hover { transform: translateY(-1px); }
+  .pc-home .pc-category:hover,
+  .pc-home .pc-product-card:hover,
+  .pc-home .pc-store-card:hover { transform: translateY(-3px); }
+  .pc-home .pc-product-card:hover .pc-product-media img,
+  .pc-home .pc-product-card:hover .pc-product-image img { transform: scale(1.045); }
+  .pc-home .pc-compare-product:hover { transform: translateY(-2px); }
+  .pc-home .pc-how-step:hover { transform: translateY(-3px); }
+  .pc-home .pc-how-step:hover .pc-how-icon { transform: scale(1.045); }
+  .pc-home .pc-dialog-media:hover img { transform: scale(1.025); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-home *,
+  .pc-home *::before,
+  .pc-home *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .pc-home :is(a, button, input, .pc-result, .pc-category, .pc-product-card, .pc-store-card, .pc-how-step, .pc-compare-product) {
+    transition-property: color, background-color, border-color, opacity, box-shadow !important;
+    transition-duration: var(--pc-k-fast) !important;
+  }
+  .pc-home :is(a, button, .pc-category, .pc-product-card, .pc-store-card, .pc-how-step, .pc-compare-product):active,
+  .pc-home :is(a, button, .pc-category, .pc-product-card, .pc-store-card, .pc-how-step, .pc-compare-product):hover { transform: none !important; }
+}
