@@ -28,7 +28,9 @@ import {
   IceCream,
   Pizza,
   X,
-  Filter
+  Filter,
+  Home,
+  Bed
 } from "lucide-react";
 import { buildCatalog, type CatalogPayload, type Product } from "../data/catalog";
 import { fetchCatalog } from "../data/remoteCatalog";
