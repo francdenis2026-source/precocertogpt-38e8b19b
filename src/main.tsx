@@ -7,6 +7,7 @@ import "./index.css";
 import "./styles/GlobalScrollbarRefinement.css";
 import App from "./App";
 import "./pages/HomeFinalConsolidatedTheme.css";
+import "./pages/HomeNeoLayout.css";
 import { HourlyHomeProductRotation } from "./components/HourlyHomeProductRotation";
 import { HomepageSearchInputPolish } from "./components/HomepageSearchInputPolish";
 import { HomepageSearchCloseFix } from "./components/HomepageSearchCloseFix";
