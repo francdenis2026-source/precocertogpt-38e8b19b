@@ -10,10 +10,47 @@ body:has(.pc-home) .pc-home > main {
 
 /* Header/hero boundary — keep the photography below the navigation plane. */
 .pc-home .pc-header {
+  position: fixed;
+  inset: 0 0 auto;
+  width: 100%;
   isolation: isolate;
-  background: linear-gradient(90deg, rgba(4, 39, 35, .99), rgba(5, 48, 42, .97));
-  border-bottom: 1px solid rgba(223, 242, 234, .22);
-  box-shadow: 0 10px 30px rgba(2, 24, 21, .12);
+  overflow: visible;
+  background-color: rgba(4, 39, 35, .98);
+  background-image: linear-gradient(90deg, rgba(4, 39, 35, .22), rgba(5, 48, 42, .04));
+  border-bottom: 1px solid rgba(223, 242, 234, .18);
+  box-shadow: 0 8px 26px rgba(2, 24, 21, .1);
+  transition:
+    background-color var(--pc-k-normal, 180ms) ease,
+    border-color var(--pc-k-normal, 180ms) ease,
+    box-shadow var(--pc-k-slow, 240ms) var(--pc-k-out, cubic-bezier(.23, 1, .32, 1));
+}
+
+.pc-home .pc-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 18% -70%, rgba(255, 255, 255, .28), transparent 42%),
+    radial-gradient(circle at 78% 160%, rgba(123, 232, 199, .16), transparent 38%),
+    linear-gradient(115deg, rgba(255, 255, 255, .08), transparent 36% 64%, rgba(255, 176, 146, .08));
+  transition: opacity var(--pc-k-slow, 240ms) var(--pc-k-out, cubic-bezier(.23, 1, .32, 1));
+}
+
+.pc-home .pc-header.is-scrolled {
+  background-color: rgba(4, 43, 38, .72);
+  border-bottom-color: rgba(231, 249, 242, .24);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .08) inset,
+    0 14px 38px rgba(2, 26, 22, .2);
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  backdrop-filter: blur(22px) saturate(165%);
+}
+
+.pc-home .pc-header.is-scrolled::before {
+  opacity: 1;
 }
 
 .pc-home .pc-header::after {
@@ -22,7 +59,13 @@ body:has(.pc-home) .pc-home > main {
   inset: auto 0 -1px;
   height: 1px;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 176, 146, .5) 12%, rgba(223, 242, 234, .3) 50%, rgba(255, 176, 146, .5) 88%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 176, 146, .42) 12%, rgba(231, 249, 242, .38) 50%, rgba(255, 176, 146, .42) 88%, transparent 100%);
+  opacity: .72;
+  transition: opacity var(--pc-k-normal, 180ms) ease;
+}
+
+.pc-home .pc-header.is-scrolled::after {
+  opacity: 1;
 }
 
 .pc-home .pc-header-inner {
@@ -48,6 +91,12 @@ body:has(.pc-home) .pc-home > main {
 @media (max-width: 720px) {
   .pc-home .pc-action-strip { padding-top: 0; }
   .pc-home .pc-action-strip-inner { border-radius: 0; }
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .pc-home .pc-header.is-scrolled {
+    background: rgba(4, 43, 38, .96);
+  }
 }
 
 .pc-home {
