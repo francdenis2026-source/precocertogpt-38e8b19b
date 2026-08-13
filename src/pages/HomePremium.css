@@ -881,32 +881,34 @@
   }
 }
 
-/* Dynamic Commercial Section */
+/* Dynamic Commercial Section - Professional Refinement */
 .pc-dynamic-ad {
-  padding-block: 40px 0;
+  padding-block: 24px 0; /* Reduced top padding */
   background: var(--pc-cream);
   position: relative;
   z-index: 10;
+  margin-top: 62px; /* Add margin to prevent sticking to absolute header */
 }
 
 .pc-ad-card {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.3fr 0.7fr;
   background: linear-gradient(135deg, var(--pc-deep-2) 0%, var(--pc-teal-strong) 100%);
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--pc-shadow-md);
   position: relative;
-  min-height: 380px;
+  min-height: 280px; /* Significantly reduced height */
 }
 
 .pc-ad-content {
-  padding: clamp(32px, 5vw, 60px);
+  padding: 32px 40px; /* More compact padding */
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: #fff;
 }
+
 
 .pc-ad-badge {
   display: inline-flex;
@@ -925,25 +927,26 @@
 
 .pc-ad-content h2 {
   color: #fff !important;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height: 1.05;
-  margin-bottom: 20px;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.4rem, 2.5vw, 2rem); /* Smaller font size */
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.03em;
 }
 
 .pc-ad-content p {
   color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  line-height: 1.6;
-  max-width: 520px;
-  margin-bottom: 32px;
+  font-size: clamp(0.85rem, 1vw, 0.95rem); /* Smaller font size */
+  line-height: 1.5;
+  max-width: 480px;
+  margin-bottom: 20px;
 }
 
 .pc-ad-stats {
   display: flex;
-  gap: 40px;
-  margin-bottom: 40px;
+  gap: 32px;
+  margin-bottom: 24px;
 }
+
 
 .pc-ad-stat {
   display: flex;
@@ -951,33 +954,35 @@
 }
 
 .pc-ad-stat strong {
-  font-size: 2rem;
+  font-size: 1.6rem; /* Smaller font size */
   font-weight: 900;
   color: var(--pc-coral);
   line-height: 1;
 }
 
 .pc-ad-stat span {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   font-weight: 700;
-  margin-top: 4px;
+  margin-top: 2px;
 }
+
 
 .pc-ad-btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 32px;
+  gap: 10px;
+  padding: 12px 24px;
   background: #fff;
   color: var(--pc-deep-2) !important;
-  border-radius: 14px;
+  border-radius: 12px;
   font-weight: 850;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: all 0.3s var(--pc-ease);
   width: fit-content;
 }
+
 
 .pc-ad-btn:hover {
   background: var(--pc-coral);
@@ -1012,12 +1017,12 @@
 
 .floating-item {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 44px; /* Smaller icons */
+  height: 44px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 18px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1025,6 +1030,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   animation: float 6s ease-in-out infinite;
 }
+
 
 .item-1 { top: 20%; left: 20%; animation-delay: 0s; }
 .item-2 { bottom: 30%; right: 25%; animation-delay: 2s; }
