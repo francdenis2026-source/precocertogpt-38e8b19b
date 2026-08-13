@@ -954,19 +954,20 @@
 }
 
 .pc-ad-stat strong {
-  font-size: 2rem;
+  font-size: 1.6rem; /* Smaller font size */
   font-weight: 900;
   color: var(--pc-coral);
   line-height: 1;
 }
 
 .pc-ad-stat span {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   font-weight: 700;
-  margin-top: 4px;
+  margin-top: 2px;
 }
+
 
 .pc-ad-btn {
   display: inline-flex;
