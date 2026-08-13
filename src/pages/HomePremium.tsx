@@ -503,7 +503,7 @@ export function HomePremium() {
               const saving = Math.max(0, product.maxPrice - product.minPrice);
               const featured = index === 0;
               return (
-                <article className={`pc-product-card${featured ? " is-featured" : ""}`} key={String(product.id)}>
+                <article className={`pc-product-card${featured ? " is-featured" : ""}`} key={`${String(product.id)}-${index}`} data-product-id={String(product.id)}>
                   <button className="pc-product-open" type="button" onClick={() => setSelectedProduct(product)} aria-label={`Abrir comparação de ${product.name}`}>
                     <span className="pc-product-media">
                       {featured && <span className="pc-product-featured-label"><Sparkles aria-hidden="true" /> Maior economia da seleção</span>}
