@@ -257,7 +257,11 @@ export async function fetchCatalog(query = ""): Promise<CatalogResult> {
         const searchFields = [product.name, product.category, product.brand, product.barcode, product.size].filter(Boolean) as string[];
         return searchFields.some(field => normalize(field).includes(q));
       })
-      .sort((a, b) => a.minPrice - b.minPrice || a.name.localeCompare(b.name, "pt-BR"));
+      // Ordenação determinística: preço, nome e, por fim, o id (único) como desempate.
+      .sort((a, b) =>
+        a.minPrice - b.minPrice ||
+        a.name.localeCompare(b.name, "pt-BR") ||
+        String(a.id).localeCompare(String(b.id)));
 
     const stores: StoreRow[] = storeRows.map(store => ({
       id: store.id,

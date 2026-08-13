@@ -1,38 +1,49 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from "@playwright/test";
 
-test.describe('HomePremium Products Consistency', () => {
-  test('should not show local data initially and should load remote data', async ({ page }) => {
-    // Navigate to the home page
-    await page.goto('http://localhost:8080/');
+async function readProductIds(page: Page) {
+  const cards = page.locator(".pc-product-card");
+  await expect(cards.first()).toBeVisible({ timeout: 20000 });
+  await expect.poll(async () => cards.count(), { timeout: 20000 }).toBeGreaterThan(1);
+  return cards.evaluateAll((nodes) => nodes.map((node) => node.getAttribute("data-product-id")));
+}
 
-    // Initially, catalogLoading is true, so "Buscando produtos..." should be visible if it was in the search results,
-    // but here we are checking the opportunities section.
-    
-    // We expect to see some product cards eventually (remote data)
-    const productCards = page.locator('.pc-product-card');
-    await expect(productCards.first()).toBeVisible({ timeout: 10000 });
+test.describe("Consistência do catálogo na home", () => {
+  test("a lista, a ordenação e os IDs não mudam entre recarregamentos", async ({ page }) => {
+    await page.goto("/");
+    const first = await readProductIds(page);
+    expect(first.length).toBeGreaterThan(1);
+    expect(first).not.toContain(null);
 
-    const count = await productCards.count();
-    console.log(`Loaded ${count} products from remote catalog.`);
-    
-    // Get the IDs of the first 3 products
-    const initialIds = await Promise.all(
-      (await productCards.all()).slice(0, 3).map(card => card.getAttribute('data-product-id'))
-    );
-    console.log('Initial product IDs:', initialIds);
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      await page.reload();
+      const next = await readProductIds(page);
+      expect(next).toEqual(first);
+    }
+  });
 
-    // Refresh the page
+  test("a lista permanece idêntica após navegar e voltar", async ({ page }) => {
+    await page.goto("/");
+    const first = await readProductIds(page);
+
+    await page.goto("/buscar");
+    await page.goto("/");
+    expect(await readProductIds(page)).toEqual(first);
+
+    await page.goBack();
+    await page.goForward();
+    expect(await readProductIds(page)).toEqual(first);
+  });
+
+  test("as lojas exibidas mantêm a mesma ordem entre recarregamentos", async ({ page }) => {
+    await page.goto("/");
+    const storeIds = page.locator(".pc-store-card");
+    await expect(storeIds.first()).toBeVisible({ timeout: 20000 });
+    const before = await storeIds.evaluateAll((nodes) => nodes.map((n) => n.getAttribute("data-store-id")));
+
     await page.reload();
-    
-    // Wait for product cards again
-    await expect(productCards.first()).toBeVisible({ timeout: 10000 });
-    
-    const newIds = await Promise.all(
-      (await productCards.all()).slice(0, 3).map(card => card.getAttribute('data-product-id'))
-    );
-    console.log('After refresh product IDs:', newIds);
+    await expect(storeIds.first()).toBeVisible({ timeout: 20000 });
+    const after = await storeIds.evaluateAll((nodes) => nodes.map((n) => n.getAttribute("data-store-id")));
 
-    // Verify the IDs are the same (consistency)
-    expect(newIds).toEqual(initialIds);
+    expect(after).toEqual(before);
   });
 });
