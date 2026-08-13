@@ -288,7 +288,18 @@ body:has(.pc-home) .pc-home > main {
 .pc-home .pc-basket-copy > a:active,
 .pc-home .pc-commercial-copy > a:active { transform: scale(.97); }
 .pc-home .pc-compare-product {
-  transition: opacity var(--pc-k-slow) ease, filter var(--pc-k-slow) ease, box-shadow var(--pc-k-slow) ease, transform var(--pc-k-slow) var(--pc-k-out);
+  transform-origin: center;
+  transition: opacity 180ms ease, filter 180ms ease, box-shadow var(--pc-k-slow) ease, transform var(--pc-k-slow) var(--pc-k-out);
+}
+.pc-home .pc-compare-product.is-exiting {
+  opacity: .12;
+  filter: blur(2px);
+  transform: scale(.985) !important;
+}
+.pc-home .pc-compare-product.is-entering {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1) !important;
 }
 .pc-home .pc-compare-product-image img { transition: transform var(--pc-k-slow) var(--pc-k-out), filter var(--pc-k-slow) ease; }
 
@@ -312,6 +323,16 @@ body:has(.pc-home) .pc-home > main {
 }
 .pc-home .pc-dialog-actions a:active,
 .pc-home .pc-dialog-actions button:active { transform: scale(.97); }
+
+/* Press feedback belongs to every visible action, without slowing keyboard use. */
+.pc-home :is(.pc-action-strip a, .pc-category, .pc-product-open, .pc-store-card, .pc-how-head > a):active {
+  transform: scale(.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pc-home .pc-dialog-close:hover { transform: rotate(6deg) scale(1.03); }
+  .pc-home .pc-dialog-offers > div:hover { transform: translateX(2px); }
+}
 
 /* Visible keyboard state follows geometry instead of element defaults. */
 .pc-home :is(a, button, input):focus-visible {
