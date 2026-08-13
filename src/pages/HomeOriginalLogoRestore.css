@@ -1,0 +1,25 @@
+.pc-home .pc-logo img,
+.pc-home .pc-footer-brand img {
+  content: url('/logo-preco-certo.svg');
+  width: 196px !important;
+  max-width: 196px !important;
+  height: 46px !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+}
+
+@media (max-width: 720px) {
+  .pc-home .pc-logo img {
+    width: 172px !important;
+    max-width: 172px !important;
+    height: 40px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .pc-home .pc-logo img {
+    width: 156px !important;
+    max-width: 156px !important;
+    height: 38px !important;
+  }
+}
