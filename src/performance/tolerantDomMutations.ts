@@ -6,6 +6,8 @@
 // We make removeChild/insertBefore tolerant instead of fatal.
 
 const GLOBAL_KEY = "__precocerto_tolerant_dom__";
+const CACHE_RESET_KEY = "precocerto:published-cache-reset";
+const CACHE_RESET_VERSION = "2026-08-13-v1";
 
 type GuardedWindow = Window & typeof globalThis & { [GLOBAL_KEY]?: boolean };
 
@@ -32,6 +34,29 @@ if (!guardedWindow[GLOBAL_KEY]) {
     }
     return originalInsertBefore.call(this, node, reference) as T;
   };
+}
+
+// Production cache recovery: old published versions may have left a Service
+// Worker or Cache Storage entries controlling the live origin. The current app
+// does not register a Service Worker, so stale registrations are safe to remove.
+if (localStorage.getItem(CACHE_RESET_KEY) !== CACHE_RESET_VERSION) {
+  void (async () => {
+    try {
+      if ("serviceWorker" in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map((registration) => registration.unregister()));
+      }
+
+      if ("caches" in window) {
+        const cacheNames = await caches.keys();
+        await Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
+      }
+
+      localStorage.setItem(CACHE_RESET_KEY, CACHE_RESET_VERSION);
+    } catch (error) {
+      console.warn("PreçoCerto: limpeza de cache legado incompleta.", error);
+    }
+  })();
 }
 
 export {};
