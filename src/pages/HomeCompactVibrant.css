@@ -78,7 +78,7 @@
 .pc-home .pc-category:nth-child(4) .pc-category-icon { background: #f1fbfc; color: #176b80; }
 
 /* Product opportunities stay close to the section that introduces them. */
-.pc-home .pc-opportunities { padding-top: 38px; padding-bottom: 42px; }
+.pc-home .pc-opportunities { padding-top: 38px; padding-bottom: 0; }
 .pc-home .pc-opportunities .pc-heading-row { margin-bottom: 18px; }
 .pc-home .pc-heading-row > a { background: var(--pc-mango-soft); color: #704800; }
 
