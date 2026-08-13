@@ -1,0 +1,319 @@
+/* Final consolidated visual system — intentionally loaded LAST. */
+:root {
+  --system-blue: #4b63ff !important;
+  --system-blue-dark: #3548d8 !important;
+  --system-blue-soft: #eef0ff !important;
+  --bg: #eef1f7 !important;
+  --surface: #fffdf8 !important;
+  --surface-2: #f1f3f8 !important;
+  --surface-3: #e2e6ee !important;
+  --navy: #111827 !important;
+  --navy-light: #243047 !important;
+  --blue: #4b63ff !important;
+  --blue-hover: #3548d8 !important;
+  --blue-soft: #eef0ff !important;
+  --gold: #d8ad63 !important;
+  --gold-soft: #fbf3e3 !important;
+  --green: #16856b !important;
+  --green-soft: #e4f5ef !important;
+  --text-main: #151a27 !important;
+  --text-body: #4f5a6d !important;
+  --muted: #768092 !important;
+  --border: #d9dee8 !important;
+  --border-strong: #c5ccd9 !important;
+}
+
+[data-theme="dark"] {
+  --bg: #080d19 !important;
+  --surface: #111827 !important;
+  --surface-2: #182135 !important;
+  --surface-3: #202b42 !important;
+  --navy: #f7f4ed !important;
+  --navy-light: #dfe5f0 !important;
+  --blue: #8190ff !important;
+  --blue-hover: #9da8ff !important;
+  --blue-soft: rgba(129,144,255,.14) !important;
+  --gold: #e5c17f !important;
+  --green: #55c9a7 !important;
+  --text-main: #f7f4ed !important;
+  --text-body: #c8d0df !important;
+  --muted: #97a2b5 !important;
+  --border: #263249 !important;
+  --border-strong: #35435d !important;
+}
+
+body {
+  background-color: #0a1020 !important;
+  background-image:
+    linear-gradient(180deg, rgba(8,13,25,.70), rgba(8,13,25,.88)),
+    url('/mercado-local-profissional.webp') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+.pc-home {
+  --pc-deep: #111a38 !important;
+  --pc-deep-2: #0b1228 !important;
+  --pc-teal: #4b63ff !important;
+  --pc-teal-strong: #3548d8 !important;
+  --pc-coral: #d8ad63 !important;
+  --pc-coral-strong: #bd8f43 !important;
+  --pc-cream: #eef1f7 !important;
+  --pc-paper: rgba(255,253,248,.96) !important;
+  --pc-text: #151a27 !important;
+  --pc-muted: #707b8d !important;
+  --pc-border: #d8dde7 !important;
+  --pc-success: #16856b !important;
+  --pc-mango: #d8ad63 !important;
+  --pc-mango-soft: #fbf3e3 !important;
+  --pc-sky: #4b63ff !important;
+  --pc-sky-soft: #eef0ff !important;
+  --pc-mint: #e4f5ef !important;
+  --pc-coral-soft: #f3eadc !important;
+  --pc-surface: #fffdf8 !important;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(75,99,255,.12), transparent 24rem),
+    radial-gradient(circle at 94% 32%, rgba(216,173,99,.10), transparent 22rem),
+    rgba(238,241,247,.96) !important;
+  color: var(--pc-text) !important;
+}
+
+[data-theme="dark"] .pc-home {
+  --pc-cream: #080d19 !important;
+  --pc-paper: rgba(17,24,39,.96) !important;
+  --pc-text: #f7f4ed !important;
+  --pc-muted: #9ba7ba !important;
+  --pc-border: #29364d !important;
+  --pc-surface: #111827 !important;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(75,99,255,.14), transparent 24rem),
+    radial-gradient(circle at 94% 32%, rgba(216,173,99,.08), transparent 22rem),
+    #080d19 !important;
+}
+
+/* Header / navigation */
+.pc-home .pc-header {
+  background-color: rgba(10,16,32,.94) !important;
+  background-image: linear-gradient(90deg, rgba(75,99,255,.09), rgba(216,173,99,.04)) !important;
+  border-bottom-color: rgba(255,255,255,.12) !important;
+  box-shadow: 0 10px 30px rgba(3,7,18,.20) !important;
+}
+.pc-home .pc-header.is-scrolled {
+  background-color: rgba(10,16,32,.76) !important;
+  border-bottom-color: rgba(255,255,255,.16) !important;
+}
+.pc-home .pc-header::after {
+  background: linear-gradient(90deg, transparent, rgba(129,144,255,.5), rgba(229,193,127,.46), transparent) !important;
+}
+.pc-home .pc-nav a::after { background: #d8ad63 !important; }
+.pc-home .pc-merchant { background: #d8ad63 !important; color: #171a23 !important; }
+.pc-home .pc-merchant:hover { background: #e6c686 !important; }
+
+/* Main hero: preserve existing photograph, replace only visual treatment. */
+.pc-home .pc-hero {
+  min-height: 386px !important;
+  background-color: #0b1228 !important;
+}
+.pc-home .pc-hero::after {
+  background:
+    radial-gradient(circle at 76% 42%, rgba(216,173,99,.14), transparent 24%),
+    linear-gradient(90deg, rgba(8,13,30,.995) 0%, rgba(9,15,34,.955) 44%, rgba(12,20,45,.58) 70%, rgba(12,20,45,.20) 100%) !important;
+}
+.pc-home .pc-kicker { color: #ead29f !important; }
+.pc-home .pc-hero h1 em { color: #e4c07b !important; }
+.pc-home .pc-hero-copy > p { color: #d9deea !important; }
+.pc-home .pc-quick { color: #c5ccdc !important; }
+.pc-home .pc-quick button {
+  border-color: rgba(255,255,255,.16) !important;
+  background: rgba(255,255,255,.07) !important;
+  color: #f8f5ee !important;
+}
+
+/* Search */
+.pc-home .pc-search {
+  border-color: rgba(255,255,255,.92) !important;
+  background: rgba(255,253,248,.985) !important;
+  box-shadow: 0 0 0 4px rgba(75,99,255,.12), 0 20px 52px rgba(3,7,18,.26) !important;
+}
+.pc-home .pc-search:focus-within {
+  border-color: #8190ff !important;
+  box-shadow: 0 0 0 4px rgba(75,99,255,.18), 0 22px 56px rgba(3,7,18,.28) !important;
+}
+.pc-home .pc-search button,
+.pc-home .pc-primary-button,
+.pc-home .pc-compare-button,
+.pc-home .pc-cta {
+  background: linear-gradient(135deg, #4b63ff, #3548d8) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(53,72,216,.25) !important;
+}
+
+/* Compact rhythm */
+.pc-home .pc-section { padding-block: clamp(28px, 3.6vw, 46px) !important; }
+.pc-home .pc-heading,
+.pc-home .pc-heading-row,
+.pc-home .pc-how-head { margin-bottom: 14px !important; }
+.pc-home .pc-categories { padding-block: clamp(30px,4vw,48px) !important; gap: clamp(18px,3vw,34px) !important; }
+.pc-home .pc-opportunities { padding-top: 28px !important; }
+.pc-home .pc-stores,
+.pc-home .pc-how { padding-block: clamp(30px,4vw,48px) !important; }
+.pc-home h2 { color: #151a27 !important; }
+[data-theme="dark"] .pc-home h2 { color: #f7f4ed !important; }
+
+/* Action strip */
+.pc-home .pc-action-strip { margin-top: -8px !important; padding-top: 0 !important; }
+.pc-home .pc-action-strip-inner {
+  border-color: rgba(58,67,87,.14) !important;
+  background: rgba(255,253,248,.96) !important;
+  box-shadow: 0 14px 34px rgba(3,7,18,.12) !important;
+}
+.pc-home .pc-action-strip a:nth-child(1),
+.pc-home .pc-action-strip a:nth-child(2),
+.pc-home .pc-action-strip a:nth-child(3) { background: #fffdf8 !important; }
+.pc-home .pc-action-strip a + a { border-left-color: #e1e5ed !important; }
+.pc-home .pc-action-strip a > svg:first-child {
+  background: #eef0ff !important;
+  color: #4b63ff !important;
+}
+
+/* Categories */
+.pc-home .pc-category {
+  min-height: 82px !important;
+  border: 1px solid #d9dee8 !important;
+  background: #fffdf8 !important;
+  color: #151a27 !important;
+  box-shadow: 0 8px 22px rgba(3,7,18,.07) !important;
+}
+.pc-home .pc-category:nth-child(n) { background: #fffdf8 !important; }
+.pc-home .pc-category:nth-child(1) {
+  background: linear-gradient(135deg,#151f44,#263a78) !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,.08) !important;
+}
+.pc-home .pc-category:nth-child(n+2) .pc-category-icon {
+  background: #eef0ff !important;
+  color: #4b63ff !important;
+}
+
+/* Product cards */
+.pc-home .pc-product-grid { gap: 12px !important; }
+.pc-home .pc-product-card {
+  padding: 0 !important;
+  border: 1px solid #d9dee8 !important;
+  background: #fffdf8 !important;
+  color: #151a27 !important;
+  box-shadow: 0 10px 28px rgba(3,7,18,.08) !important;
+}
+.pc-home .pc-product-media {
+  background: linear-gradient(145deg,#f3f5fa,#fffaf1) !important;
+}
+.pc-home .pc-price-line strong { color: #16856b !important; }
+.pc-home .pc-price-line em { color: #9e6c27 !important; }
+.pc-home .pc-store-line { color: #576174 !important; }
+
+/* Comparison section */
+.pc-home .pc-compare-section { min-height: 372px !important; }
+.pc-home .pc-compare-section::before {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(216,173,99,.18), transparent 25%),
+    linear-gradient(102deg, rgba(9,14,31,.99) 0%, rgba(12,20,45,.96) 50%, rgba(25,35,70,.50) 100%),
+    url('/mercado-local-profissional.webp') 78% center / cover no-repeat !important;
+}
+.pc-home .pc-compare-layout { padding-block: 36px !important; gap: clamp(24px,4vw,48px) !important; }
+.pc-home .pc-offer-row.is-best { background: linear-gradient(90deg,#e4f5ef,#fbf3e3) !important; }
+
+/* Store directory */
+.pc-home .pc-store-grid { gap: 10px !important; }
+.pc-home .pc-store-card,
+.pc-home .pc-store-card:nth-child(n) {
+  border: 1px solid #d9dee8 !important;
+  background: #fffdf8 !important;
+  color: #151a27 !important;
+  box-shadow: 0 8px 22px rgba(3,7,18,.07) !important;
+}
+.pc-home .pc-store-card:first-child {
+  background: linear-gradient(135deg,#151f44,#263a78) !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,.08) !important;
+}
+
+/* Basket */
+.pc-home .pc-basket-section {
+  min-height: 350px !important;
+  background: linear-gradient(135deg,#e4c17e 0%,#d5a85b 54%,#b8843c 100%) !important;
+}
+.pc-home .pc-basket-layout { min-height: 350px !important; padding-block: 34px !important; }
+.pc-home .pc-basket-copy h2 { color: #171a23 !important; }
+.pc-home .pc-basket-copy p { color: #3f4149 !important; }
+.pc-home .pc-basket-points span { background: rgba(17,26,56,.90) !important; }
+
+/* How it works */
+.pc-home .pc-how::before { background: linear-gradient(135deg,#f8f9fc,#eef0ff) !important; }
+.pc-home .pc-how-step,
+.pc-home .pc-how-step:nth-child(n) {
+  min-height: 158px !important;
+  border: 1px solid #d9dee8 !important;
+  background: #fffdf8 !important;
+  color: #151a27 !important;
+  box-shadow: 0 8px 22px rgba(3,7,18,.07) !important;
+}
+.pc-home .pc-how-icon { background: #eef0ff !important; color: #4b63ff !important; }
+
+/* Merchant closing section */
+.pc-home .pc-commercial {
+  min-height: 376px !important;
+  background: #0b1228 !important;
+}
+.pc-home .pc-commercial-layout { min-height: 376px !important; padding-block: 38px !important; }
+.pc-home .pc-commercial::after {
+  background:
+    radial-gradient(circle at 12% 20%, rgba(216,173,99,.18), transparent 28%),
+    linear-gradient(90deg,rgba(8,13,30,.995) 0%,rgba(9,15,34,.98) 54%,rgba(18,30,62,.24) 82%) !important;
+}
+.pc-home .pc-commercial-features span:nth-child(n) {
+  background: rgba(129,144,255,.12) !important;
+  border-color: rgba(129,144,255,.18) !important;
+}
+
+/* Footer */
+.pc-home .pc-footer,
+body .pc-footer,
+body footer {
+  background: rgba(8,13,25,.94) !important;
+  border-top-color: rgba(255,255,255,.10) !important;
+  color: #c9d1df !important;
+}
+
+[data-theme="dark"] .pc-home :is(.pc-product-card,.pc-category,.pc-store-card,.pc-how-step) {
+  border-color: #29364d !important;
+  background: #111827 !important;
+  color: #f7f4ed !important;
+}
+[data-theme="dark"] .pc-home .pc-action-strip-inner { background: rgba(17,24,39,.96) !important; border-color: #29364d !important; }
+[data-theme="dark"] .pc-home .pc-action-strip a:nth-child(n) { background: #111827 !important; color: #f7f4ed !important; }
+[data-theme="dark"] .pc-home .pc-how::before { background: linear-gradient(135deg,#0c1324,#121a31) !important; }
+
+@media (hover:hover) and (pointer:fine) {
+  .pc-home :is(.pc-product-card,.pc-category,.pc-store-card,.pc-how-step):hover {
+    transform: translateY(-2px) !important;
+    border-color: rgba(75,99,255,.34) !important;
+    box-shadow: 0 14px 32px rgba(3,7,18,.13) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body { background-attachment: scroll !important; }
+  .pc-home { background: rgba(238,241,247,.985) !important; }
+  [data-theme="dark"] .pc-home { background: #080d19 !important; }
+  .pc-home .pc-hero { min-height: 0 !important; }
+  .pc-home .pc-hero::after { background: linear-gradient(180deg,rgba(8,13,30,.94),rgba(9,15,34,.80) 56%,rgba(8,13,30,.97)) !important; }
+  .pc-home .pc-section { padding-block: 26px !important; }
+  .pc-home .pc-categories { padding-block: 28px !important; }
+  .pc-home .pc-basket-section,.pc-home .pc-basket-layout,.pc-home .pc-commercial,.pc-home .pc-commercial-layout { min-height: 0 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-home :is(.pc-product-card,.pc-category,.pc-store-card,.pc-how-step,.pc-search button,.pc-compare-button) { transition: none !important; }
+}
