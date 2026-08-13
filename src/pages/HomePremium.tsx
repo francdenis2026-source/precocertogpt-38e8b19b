@@ -75,6 +75,7 @@ export function HomePremium() {
   const [activeResult, setActiveResult] = useState(-1);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [theme, setTheme] = useState<Theme>(readTheme);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
   const searchAreaRef = useRef<HTMLDivElement>(null);
   const homeRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
@@ -86,6 +87,25 @@ export function HomePremium() {
     document.documentElement.style.colorScheme = theme;
     window.localStorage.setItem("theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    let frame = 0;
+    const updateHeader = () => {
+      frame = 0;
+      const nextScrolled = window.scrollY > 16;
+      setHeaderScrolled((current) => current === nextScrolled ? current : nextScrolled);
+    };
+    const handleScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateHeader);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   useGSAP(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -258,7 +278,7 @@ export function HomePremium() {
     <div className="pc-home" ref={homeRef}>
       <a className="pc-skip" href="#pc-content">Ir para o conteúdo</a>
 
-      <header className="pc-header">
+      <header className={`pc-header${headerScrolled ? " is-scrolled" : ""}`}>
         <div className="pc-shell pc-header-inner">
           <Link className="pc-logo" to="/" aria-label="PreçoCerto — página inicial">
             <img src="/logo-preco-certo-inversa.svg" alt="PreçoCerto" />
