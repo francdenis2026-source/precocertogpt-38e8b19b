@@ -311,6 +311,40 @@ export function HomePremium() {
       </header>
 
       <main id="pc-content">
+        <section className="pc-dynamic-ad">
+          <div className="pc-shell">
+            <div className="pc-ad-card">
+              <div className="pc-ad-content">
+                <div className="pc-ad-badge">Marketplace Local</div>
+                <h2>A maior vitrine comercial de Feijó agora é digital.</h2>
+                <p>Encontre tudo o que você precisa, compare preços em tempo real e apoie o comércio da nossa cidade em uma única plataforma.</p>
+                <div className="pc-ad-stats">
+                  <div className="pc-ad-stat">
+                    <strong>+50</strong>
+                    <span>Lojas Parceiras</span>
+                  </div>
+                  <div className="pc-ad-stat">
+                    <strong>100%</strong>
+                    <span>Economia Real</span>
+                  </div>
+                </div>
+                <Link to="/estabelecimentos" className="pc-ad-btn">
+                  Explorar Marketplace <ArrowRight size={18} />
+                </Link>
+              </div>
+              <div className="pc-ad-visual">
+                <div className="pc-ad-floating-icons">
+                  <div className="floating-item item-1"><Store size={24} /></div>
+                  <div className="floating-item item-2"><ShoppingBasket size={24} /></div>
+                  <div className="floating-item item-3"><BadgeDollarSign size={24} /></div>
+                </div>
+                <img src="/mercado-local-profissional.webp" alt="Marketplace Local" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         <section className="pc-hero" aria-labelledby="pc-title">
           <div className="pc-shell pc-hero-inner">
             <div className="pc-hero-copy">
