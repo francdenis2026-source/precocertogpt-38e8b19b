@@ -1,0 +1,186 @@
+/* UI/UX Pro Max — busca global: painel acima, barra sempre nítida acima do blur. */
+
+.pc-search-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483000 !important;
+  pointer-events: none;
+}
+
+.pc-search-overlay__backdrop {
+  z-index: 1 !important;
+  pointer-events: auto;
+  background: rgba(5, 20, 17, .24) !important;
+  backdrop-filter: blur(3px) saturate(.9) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(.9) !important;
+}
+
+/* A barra ativa é portada para o body: não fica presa ao stacking context do hero. */
+.pc-search-overlay__floating-search {
+  position: fixed;
+  top: var(--pc-floating-top);
+  left: var(--pc-floating-left);
+  z-index: 3;
+  width: var(--pc-floating-width);
+  min-height: var(--pc-floating-height);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 6px 5px 15px;
+  border: 1px solid rgba(255,255,255,.98);
+  border-radius: 13px;
+  background: #fff;
+  color: #172a25;
+  box-shadow:
+    0 0 0 4px rgba(242,121,85,.20),
+    0 18px 48px rgba(4,21,18,.34);
+  pointer-events: auto;
+}
+
+.pc-search-overlay__floating-search > svg {
+  width: 20px;
+  height: 20px;
+  color: #43665e;
+}
+
+.pc-search-overlay__floating-search input {
+  min-width: 0;
+  height: 44px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #172a25;
+  caret-color: #17685d;
+  -webkit-text-fill-color: #172a25;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.pc-search-overlay__floating-search input::placeholder {
+  color: #7a8782;
+  opacity: 1;
+}
+
+.pc-search-overlay__clear {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  background: #f1f5f3;
+  color: #53665f;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 160ms ease, color 160ms ease, transform 140ms cubic-bezier(.22,.8,.22,1);
+}
+
+.pc-search-overlay__clear:hover {
+  background: #e6efeb;
+  color: #174f46;
+}
+
+.pc-search-overlay__clear:active { transform: scale(.95); }
+.pc-search-overlay__clear svg { width: 18px; height: 18px; }
+
+.pc-search-overlay__submit {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 9px;
+  background: #f27955;
+  color: #fff;
+  padding: 0 16px;
+  font: inherit;
+  font-size: .8rem;
+  font-weight: 900;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 140ms cubic-bezier(.22,.8,.22,1);
+}
+
+.pc-search-overlay__submit:hover { background: #dc5f3c; }
+.pc-search-overlay__submit:active { transform: scale(.98); }
+.pc-search-overlay__submit svg { width: 15px; height: 15px; }
+
+.pc-search-overlay__floating-search :is(input, button):focus-visible {
+  outline: 3px solid rgba(242,121,85,.45);
+  outline-offset: 2px;
+}
+
+/* O painel fica acima da barra e nunca desce por cima dela. */
+.pc-search-overlay__panel {
+  z-index: 4 !important;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  transform-origin: 50% 100% !important;
+  animation: pc-search-panel-above-in 190ms cubic-bezier(.2,.85,.2,1) both !important;
+}
+
+/* Oculta visualmente a barra original enquanto sua cópia global está ativa. */
+body.pc-search-input-active .pc-home .pc-search-area {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+[data-theme="dark"] .pc-search-overlay__floating-search {
+  border-color: #5b746a;
+  background: #f8fbf9;
+  color: #152722;
+}
+
+[data-theme="dark"] .pc-search-overlay__floating-search input {
+  color: #152722;
+  -webkit-text-fill-color: #152722;
+}
+
+[data-theme="dark"] .pc-search-overlay__clear {
+  background: #e9f0ed;
+  color: #53665f;
+}
+
+@media (max-width: 720px) {
+  .pc-search-overlay__floating-search {
+    grid-template-columns: auto minmax(0,1fr) 42px;
+    gap: 6px;
+    padding: 4px 5px 4px 12px;
+    border-radius: 12px;
+  }
+
+  .pc-search-overlay__submit {
+    width: 42px;
+    min-width: 42px;
+    padding: 0;
+  }
+
+  .pc-search-overlay__submit span { display: none; }
+  .pc-search-overlay__clear { width: 38px; height: 38px; }
+  .pc-search-overlay__floating-search input { font-size: 16px; }
+}
+
+@media (max-width: 430px) {
+  .pc-search-overlay__floating-search {
+    grid-template-columns: 18px minmax(0,1fr) 38px 40px;
+    left: 10px;
+    width: calc(100vw - 20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-search-overlay__floating-search,
+  .pc-search-overlay__panel,
+  .pc-search-overlay__clear,
+  .pc-search-overlay__submit {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@keyframes pc-search-panel-above-in {
+  from { opacity: 0; transform: translateY(8px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
