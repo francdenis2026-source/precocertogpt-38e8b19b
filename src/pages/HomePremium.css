@@ -98,10 +98,10 @@
 .pc-icon-button svg, .pc-menu-button svg { width: 18px; }
 .pc-icon-button:hover, .pc-menu-button:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.24); }
 .pc-icon-button:active, .pc-menu-button:active { transform: scale(.97); }
-.pc-merchant { min-height: 42px; display: inline-flex; align-items: center; gap: 7px; border-radius: 10px; background: var(--pc-coral); color: #fff; padding: 0 14px; font-size: .78rem; font-weight: 850; box-shadow: 0 7px 20px rgba(242,121,85,.18); transition: background-color var(--pc-fast) ease, transform var(--pc-fast) var(--pc-ease); }
+.pc-merchant { min-height: 40px; display: inline-flex; align-items: center; gap: 6px; border-radius: 9px; background: var(--pc-coral); color: #fff; padding: 0 12px; font-size: .74rem; font-weight: 850; box-shadow: 0 6px 16px rgba(242,121,85,.16); transition: background-color var(--pc-fast) ease, transform var(--pc-fast) var(--pc-ease); }
 .pc-merchant:hover { background: #ff8966; }
 .pc-merchant:active { transform: scale(.98); }
-.pc-merchant svg { width: 15px; }
+.pc-merchant svg { width: 14px; }
 .pc-menu-button, .pc-mobile-menu { display: none; }
 
 /* Hero — one focal point: search */
