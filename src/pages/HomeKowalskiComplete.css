@@ -1,4 +1,13 @@
 /* Homepage — complete Emil Kowalski interaction pass. */
+/* The legacy global header offset detects `.hero`, while this page owns `.pc-hero`. */
+body:has(.pc-home),
+body:has(.pc-home) #root,
+body:has(.pc-home) .pc-home,
+body:has(.pc-home) .pc-home > main {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 .pc-home {
   --pc-k-fast: 120ms;
   --pc-k-normal: 180ms;
