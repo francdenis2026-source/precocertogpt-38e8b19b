@@ -1,5 +1,21 @@
-/* Legacy link retained by index.html; only backdrop compatibility remains here. */
-html body .pc-home.pc-home{background-color:#f4f1ea!important;background-image:linear-gradient(rgba(244,241,234,.30),rgba(244,241,234,.38)),url('/marketplace-local-profissional-v2.webp')!important;background-size:cover!important;background-position:center top!important;background-repeat:no-repeat!important;background-attachment:fixed!important}
-html[data-theme="dark"] body .pc-home.pc-home{background-color:#0a111c!important;background-image:linear-gradient(rgba(10,17,28,.44),rgba(10,17,28,.54)),url('/marketplace-local-profissional-v2.webp')!important}
-html body .pc-home.pc-home::before,html body .pc-home.pc-home::after{background:none!important;background-image:none!important;filter:none!important;opacity:0!important}
-@media(max-width:720px){html body .pc-home.pc-home{background-attachment:scroll!important;background-position:54% top!important}}
+/* Compatibility layer: the homepage now uses contextual section backgrounds, not one photo across the entire page. */
+html body .pc-home.pc-home{
+  background-color:#f4f1ea!important;
+  background-image:
+    radial-gradient(circle at 12% 18%,rgba(184,74,34,.055),transparent 28%),
+    radial-gradient(circle at 88% 46%,rgba(15,27,45,.045),transparent 30%)!important;
+  background-attachment:scroll!important;
+}
+html[data-theme="dark"] body .pc-home.pc-home{
+  background-color:#0a111c!important;
+  background-image:
+    radial-gradient(circle at 12% 18%,rgba(224,120,75,.06),transparent 28%),
+    radial-gradient(circle at 88% 46%,rgba(255,255,255,.035),transparent 30%)!important;
+}
+html body .pc-home.pc-home::before,
+html body .pc-home.pc-home::after{
+  background:none!important;
+  background-image:none!important;
+  filter:none!important;
+  opacity:0!important;
+}
