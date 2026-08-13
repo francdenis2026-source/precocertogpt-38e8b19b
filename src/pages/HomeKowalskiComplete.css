@@ -213,6 +213,225 @@ body:has(.pc-home) .pc-home > main {
   background: #172b26;
 }
 
+/* Impeccable Layout — compact density and deliberate vertical rhythm. */
+.pc-home {
+  --pc-layout-density: .86;
+  --pc-space-section: clamp(30px, 3.4vw, 46px);
+  --pc-space-group: 16px;
+}
+
+.pc-home .pc-hero {
+  min-height: 400px;
+  padding-bottom: 25px;
+}
+
+.pc-home .pc-section,
+.pc-home .pc-categories,
+.pc-home .pc-stores,
+.pc-home .pc-how {
+  padding-block: var(--pc-space-section);
+}
+
+.pc-home :is(.pc-heading, .pc-heading-row, .pc-how-head) {
+  margin-bottom: var(--pc-space-group);
+}
+
+.pc-home .pc-action-strip {
+  padding-top: 8px;
+}
+
+.pc-home .pc-action-strip a {
+  min-height: 62px;
+  padding: 8px 13px;
+}
+
+.pc-home .pc-categories {
+  grid-template-columns: minmax(190px, .5fr) minmax(0, 1.5fr);
+  gap: clamp(18px, 3vw, 34px);
+}
+
+.pc-home .pc-category-row,
+.pc-home .pc-store-grid,
+.pc-home .pc-how-flow {
+  gap: 8px;
+}
+
+.pc-home .pc-category {
+  min-height: 72px;
+  padding: 9px 10px;
+}
+
+.pc-home .pc-category-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.pc-home .pc-opportunities {
+  padding-top: var(--pc-space-section);
+}
+
+.pc-home .pc-product-grid {
+  gap: 10px;
+}
+
+.pc-home .pc-product-card {
+  min-height: 0;
+}
+
+.pc-home .pc-product-open {
+  margin-top: 10px;
+}
+
+.pc-home .pc-product-media {
+  height: 142px;
+  padding: 10px;
+}
+
+.pc-home .pc-product-media img {
+  max-height: 122px;
+}
+
+.pc-home .pc-product-info {
+  min-height: 44px;
+  padding-block: 8px 5px;
+}
+
+.pc-home .pc-price-line {
+  min-height: 44px;
+  padding-block: 6px;
+}
+
+.pc-home .pc-store-line {
+  min-height: 29px;
+  padding-block: 4px;
+}
+
+.pc-home .pc-compare-button {
+  min-height: 38px;
+  margin-bottom: 10px;
+}
+
+.pc-home .pc-compare-section {
+  min-height: 350px;
+}
+
+.pc-home .pc-compare-layout {
+  gap: clamp(22px, 4vw, 44px);
+  padding-block: 34px;
+}
+
+.pc-home .pc-compare-product,
+.pc-home .pc-compare-product-head,
+.pc-home .pc-offer-list {
+  height: 260px !important;
+  min-height: 260px !important;
+  max-height: 260px !important;
+}
+
+.pc-home .pc-compare-product-head {
+  grid-template-rows: 168px auto;
+}
+
+.pc-home .pc-compare-product-image {
+  height: 168px !important;
+}
+
+.pc-home .pc-compare-product-image img {
+  width: 116px !important;
+  height: 128px !important;
+  padding: 7px;
+}
+
+.pc-home .pc-store-card,
+.pc-home .pc-store-card:nth-child(n) {
+  min-height: 70px;
+  padding: 9px 10px;
+}
+
+.pc-home .pc-store-card:first-child {
+  min-height: 136px;
+  padding: 16px;
+}
+
+.pc-home .pc-basket-section,
+.pc-home .pc-basket-layout {
+  min-height: 330px;
+}
+
+.pc-home .pc-basket-layout {
+  gap: 30px;
+  padding-block: 34px;
+}
+
+.pc-home .pc-how-step {
+  min-height: 148px;
+  padding: 12px;
+}
+
+.pc-home .pc-how-demo {
+  min-height: 48px;
+}
+
+.pc-home .pc-commercial,
+.pc-home .pc-commercial-layout {
+  min-height: 350px;
+}
+
+.pc-home .pc-commercial-layout {
+  padding-block: 38px;
+}
+
+@media (max-width: 1020px) {
+  .pc-home .pc-categories { grid-template-columns: 1fr; gap: 14px; }
+  .pc-home .pc-compare-layout { gap: 20px; }
+  .pc-home .pc-store-card:first-child { min-height: 110px; }
+}
+
+@media (max-width: 720px) {
+  .pc-home {
+    --pc-space-section: 28px;
+    --pc-space-group: 14px;
+  }
+  .pc-home .pc-hero { padding-bottom: 22px; }
+  .pc-home .pc-action-strip { padding-top: 0; }
+  .pc-home .pc-action-strip a { min-height: 58px; }
+  .pc-home .pc-categories { padding-block: 28px; }
+  .pc-home .pc-category { min-height: 76px; }
+  .pc-home .pc-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pc-home .pc-product-open { width: calc(100% - 16px); margin: 8px 8px 0; }
+  .pc-home .pc-product-media { height: 112px; padding: 8px; }
+  .pc-home .pc-product-media img { max-height: 96px; }
+  .pc-home .pc-product-info { min-height: 48px; }
+  .pc-home .pc-price-line,
+  .pc-home .pc-store-line,
+  .pc-home .pc-compare-button { margin-inline: 8px; }
+  .pc-home .pc-compare-button { width: calc(100% - 16px); }
+  .pc-home .pc-compare-layout { padding-block: 30px; }
+  .pc-home .pc-compare-product,
+  .pc-home .pc-compare-product-head,
+  .pc-home .pc-offer-list {
+    height: 248px !important;
+    min-height: 248px !important;
+    max-height: 248px !important;
+  }
+  .pc-home .pc-compare-product-head { grid-template-rows: 154px auto; }
+  .pc-home .pc-compare-product-image { height: 154px !important; }
+  .pc-home .pc-store-card,
+  .pc-home .pc-store-card:nth-child(n),
+  .pc-home .pc-store-card:first-child { min-height: 78px; padding: 10px; }
+  .pc-home .pc-basket-layout,
+  .pc-home .pc-commercial-layout { padding-block: 30px; }
+  .pc-home .pc-how-step { min-height: 124px; }
+  .pc-home .pc-how-demo { min-height: 42px; }
+}
+
+@media (max-width: 420px) {
+  .pc-home .pc-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pc-home .pc-product-card small { font-size: .68rem; }
+  .pc-home .pc-product-info > strong { font-size: .78rem; }
+  .pc-home .pc-price-line em { display: none; }
+}
+
 /* Header and navigation */
 .pc-home .pc-nav a,
 .pc-home .pc-icon-button,
