@@ -1,0 +1,393 @@
+@import "./HomeUiUxProMax2026.css";
+
+/* PreçoCerto — GPT‑Taste 2026
+   Refinamento estético: menos ornamento, mais precisão, ritmo e identidade comercial local. */
+
+.pc-home {
+  --taste-ink: #102033;
+  --taste-navy: #0b1b2b;
+  --taste-navy-soft: #132a3f;
+  --taste-green: #15745f;
+  --taste-green-dark: #0f5e4d;
+  --taste-acai: #74405f;
+  --taste-gold: #c99a43;
+  --taste-sand: #f4f0e8;
+  --taste-paper: #fbf9f4;
+  --taste-line: #d9d3c9;
+  --taste-muted: #68727a;
+  --taste-shadow: 0 8px 24px rgba(10, 27, 43, .075);
+  --taste-shadow-raised: 0 14px 34px rgba(10, 27, 43, .11);
+  background: var(--taste-sand) !important;
+  color: var(--taste-ink) !important;
+}
+
+[data-theme="dark"] .pc-home {
+  --taste-ink: #eef2f4;
+  --taste-sand: #0b141e;
+  --taste-paper: #111e2a;
+  --taste-line: #2b3946;
+  --taste-muted: #aeb8c0;
+  background: var(--taste-sand) !important;
+}
+
+/* Tipografia: menos peso e menos escala dramática. */
+.pc-home h1,
+.pc-home h2,
+.pc-home h3 {
+  text-wrap: balance;
+}
+.pc-home h2 {
+  max-width: 22ch;
+  font-weight: 720 !important;
+}
+.pc-home .pc-heading-row > div > p,
+.pc-home .pc-hero-copy > p,
+.pc-home .pc-compare-copy p,
+.pc-home .pc-basket-copy p,
+.pc-home .pc-commercial-copy p {
+  max-width: 62ch;
+}
+
+/* Header: vidro discreto e proporção mais precisa. */
+.pc-home .pc-header {
+  background: rgba(11, 27, 43, .84) !important;
+  backdrop-filter: blur(10px) saturate(112%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(112%) !important;
+}
+.pc-home .pc-header.is-scrolled {
+  background: rgba(11, 27, 43, .96) !important;
+  box-shadow: 0 6px 20px rgba(4, 12, 20, .16) !important;
+}
+.pc-home .pc-header-inner {
+  height: 56px !important;
+}
+.pc-home .pc-logo img {
+  width: 158px !important;
+  height: 36px !important;
+}
+.pc-home .pc-nav a {
+  font-weight: 680 !important;
+  letter-spacing: .005em;
+}
+.pc-home .pc-icon-button,
+.pc-home .pc-menu-button {
+  border-radius: 8px !important;
+}
+.pc-home .pc-merchant {
+  border-radius: 7px !important;
+  background: var(--taste-green) !important;
+  box-shadow: none !important;
+}
+.pc-home .pc-merchant:hover {
+  background: var(--taste-green-dark) !important;
+}
+
+/* Hero: fotografia + leitura, sem efeito cenográfico excessivo. */
+.pc-home .pc-hero {
+  min-height: 370px !important;
+  padding: 80px 0 30px !important;
+  background: var(--taste-navy) !important;
+}
+.pc-home .pc-hero::before {
+  background: url('/marketplace-local-profissional-v2.webp') 72% 40% / cover no-repeat !important;
+  filter: saturate(.72) contrast(1.02) brightness(.8) !important;
+}
+.pc-home .pc-hero::after {
+  background: linear-gradient(90deg, rgba(8, 24, 38, .97) 0%, rgba(8, 24, 38, .91) 43%, rgba(8, 24, 38, .54) 68%, rgba(8, 24, 38, .18) 100%) !important;
+}
+.pc-home .pc-hero h1 {
+  max-width: 12.5ch !important;
+  font-size: clamp(2.15rem, 3.7vw, 3.38rem) !important;
+  font-weight: 735 !important;
+  line-height: .98 !important;
+  letter-spacing: -.046em !important;
+}
+.pc-home .pc-hero h1 em {
+  color: #92cfbb !important;
+}
+.pc-home .pc-kicker {
+  color: #e4c98d !important;
+  letter-spacing: .08em !important;
+}
+.pc-home .pc-search {
+  min-height: 52px !important;
+  border-radius: 9px !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .19) !important;
+}
+.pc-home .pc-search button {
+  border-radius: 7px !important;
+  background: var(--taste-green) !important;
+}
+.pc-home .pc-search button:hover {
+  background: var(--taste-green-dark) !important;
+}
+.pc-home .pc-quick button {
+  border-radius: 7px !important;
+  background: rgba(255, 255, 255, .06) !important;
+}
+
+/* Atalhos: deixam de parecer três cards de template. */
+.pc-home .pc-action-strip-inner {
+  border-radius: 10px !important;
+  box-shadow: 0 6px 18px rgba(10, 27, 43, .07) !important;
+}
+.pc-home .pc-action-strip a > svg:first-child {
+  width: 26px !important;
+  height: 26px !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--taste-green) !important;
+}
+.pc-home .pc-action-strip a:hover {
+  background: rgba(21, 116, 95, .055) !important;
+}
+
+/* Seções e títulos: ritmo editorial, sem badges recorrentes. */
+.pc-home .pc-heading > span,
+.pc-home .pc-heading-row > div > span {
+  color: var(--taste-acai) !important;
+  letter-spacing: .085em !important;
+}
+.pc-home .pc-section {
+  padding-block: clamp(28px, 3.1vw, 42px) !important;
+}
+
+/* Categorias: ícone simples, sem caixa colorida repetida. */
+.pc-home .pc-category {
+  min-height: 58px !important;
+  border-radius: 8px !important;
+  background: var(--taste-paper) !important;
+  border-color: var(--taste-line) !important;
+  box-shadow: none !important;
+}
+.pc-home .pc-category-icon {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--taste-green) !important;
+}
+.pc-home .pc-category-icon svg {
+  width: 19px !important;
+}
+.pc-home .pc-category:hover {
+  background: #f7f4ee !important;
+  border-color: #bbb5aa !important;
+}
+[data-theme="dark"] .pc-home .pc-category:hover {
+  background: #152431 !important;
+}
+
+/* Produtos: aparência comercial, menos “card flutuante”. */
+.pc-home .pc-product-grid {
+  gap: 12px !important;
+}
+.pc-home .pc-product-card {
+  border-radius: 9px !important;
+  padding: 8px !important;
+  background: var(--taste-paper) !important;
+  border-color: var(--taste-line) !important;
+  box-shadow: 0 4px 14px rgba(10, 27, 43, .055) !important;
+}
+.pc-home .pc-product-card:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: var(--taste-shadow) !important;
+  border-color: #b9b2a7 !important;
+}
+.pc-home .pc-product-media {
+  height: 108px !important;
+  border-radius: 6px !important;
+  background: #f7f4ee !important;
+  border: 0 !important;
+}
+[data-theme="dark"] .pc-home .pc-product-media {
+  background: #152431 !important;
+}
+.pc-home .pc-product-featured-label {
+  border-radius: 4px !important;
+  background: rgba(11, 27, 43, .88) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.pc-home .pc-price-line em {
+  border-radius: 4px !important;
+  background: #f0e7d2 !important;
+  color: #7a591d !important;
+}
+.pc-home .pc-compare-button {
+  min-height: 30px !important;
+  border-radius: 6px !important;
+  border-color: #b9c8c3 !important;
+  color: var(--taste-green-dark) !important;
+  background: transparent !important;
+}
+.pc-home .pc-compare-button:hover {
+  background: var(--taste-green) !important;
+  border-color: var(--taste-green) !important;
+  color: #fff !important;
+}
+
+/* Comparação: faixa editorial, não um segundo hero. */
+.pc-home .pc-compare-section {
+  min-height: 0 !important;
+  background: var(--taste-navy) !important;
+}
+.pc-home .pc-compare-section::before {
+  background: rgba(11, 27, 43, .72) !important;
+}
+.pc-home .pc-compare-section::after {
+  left: 46% !important;
+  width: 22% !important;
+  opacity: .58 !important;
+  background-position: center 32% !important;
+}
+.pc-home .pc-compare-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px) !important;
+  gap: clamp(22px, 3.2vw, 38px) !important;
+  padding-block: 26px !important;
+}
+.pc-home .pc-compare-copy h2 {
+  font-size: clamp(1.45rem, 2.1vw, 1.86rem) !important;
+  max-width: 15ch !important;
+}
+.pc-home .pc-compare-copy p {
+  font-size: .78rem !important;
+  max-width: 44ch !important;
+}
+.pc-home .pc-compare-copy button {
+  min-height: 36px !important;
+  border-radius: 6px !important;
+  background: var(--taste-gold) !important;
+  box-shadow: none !important;
+}
+.pc-home .pc-compare-product {
+  max-width: 380px !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+  background: var(--taste-paper) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .16) !important;
+}
+.pc-home .pc-compare-product:hover {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .19) !important;
+}
+.pc-home .pc-compare-product-image {
+  border-radius: 6px !important;
+  background: #f7f4ee !important;
+}
+.pc-home .pc-compare-badge {
+  border-radius: 4px !important;
+}
+.pc-home .pc-offer-row {
+  border-radius: 5px !important;
+}
+.pc-home .pc-offer-row.is-best {
+  background: rgba(21, 116, 95, .07) !important;
+}
+
+/* Lojas: bordas e ícones mais sóbrios. */
+.pc-home .pc-store-card {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.pc-home .pc-store-avatar {
+  border-radius: 6px !important;
+}
+
+/* Cesta / processo / comercial: evita repetir o mesmo “hero”. */
+.pc-home .pc-basket-section {
+  background: #e9efe9 !important;
+}
+[data-theme="dark"] .pc-home .pc-basket-section {
+  background: #10231f !important;
+}
+.pc-home .pc-basket-section::before,
+.pc-home .pc-basket-section::after {
+  opacity: .18 !important;
+}
+.pc-home .pc-how-step {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.pc-home .pc-how-icon {
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--taste-green) !important;
+}
+.pc-home .pc-commercial {
+  background: var(--taste-navy-soft) !important;
+}
+.pc-home .pc-commercial::before {
+  opacity: .32 !important;
+  filter: saturate(.65) contrast(1.02) !important;
+}
+.pc-home .pc-commercial a {
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+/* Footer: mais editorial e menos pesado. */
+.pc-home .pc-footer {
+  background: #081522 !important;
+  color: #dce4e9 !important;
+  border-top: 1px solid rgba(255, 255, 255, .08) !important;
+}
+.pc-home .pc-footer-inner {
+  padding-block: 26px 20px !important;
+}
+.pc-home .pc-footer-bottom {
+  padding-block: 12px 18px !important;
+  color: #97a5af !important;
+}
+
+/* Microinterações: discretas e funcionais. */
+.pc-home :is(.pc-category,.pc-store-card,.pc-product-card,.pc-how-step) {
+  transition: border-color 170ms ease, background-color 170ms ease, box-shadow 170ms ease, transform 150ms var(--uix-ease) !important;
+}
+.pc-home :is(button,a,[role="button"]):active {
+  transform: scale(.985);
+}
+
+@media (max-width: 1024px) {
+  .pc-home .pc-hero::before { background-position: 68% 40% !important; }
+  .pc-home .pc-compare-section::after { left: 42% !important; width: 24% !important; }
+}
+
+@media (max-width: 768px) {
+  .pc-home .pc-header-inner { height: 54px !important; }
+  .pc-home .pc-logo img { width: 146px !important; height: 34px !important; }
+  .pc-home .pc-hero { min-height: 350px !important; padding-top: 74px !important; }
+  .pc-home .pc-hero::before { background-position: 63% 36% !important; }
+  .pc-home .pc-hero::after { background: rgba(8, 24, 38, .78) !important; }
+  .pc-home .pc-action-strip-inner { border-radius: 8px !important; }
+  .pc-home .pc-compare-layout { grid-template-columns: 1fr !important; padding-block: 24px !important; }
+  .pc-home .pc-compare-section::after { left: auto !important; right: 0 !important; width: 42% !important; opacity: .28 !important; }
+  .pc-home .pc-compare-product { max-width: 100% !important; justify-self: stretch !important; }
+}
+
+@media (max-width: 560px) {
+  .pc-home .pc-shell { width: min(100% - 24px, 1180px) !important; }
+  .pc-home .pc-hero { min-height: 338px !important; }
+  .pc-home .pc-hero h1 { max-width: 10.8ch !important; font-size: clamp(2rem, 10vw, 2.65rem) !important; }
+  .pc-home .pc-search { border-radius: 8px !important; }
+  .pc-home .pc-search button { border-radius: 6px !important; }
+  .pc-home .pc-product-card { border-radius: 8px !important; }
+  .pc-home .pc-product-media { height: 98px !important; }
+  .pc-home .pc-compare-section::after { display: none !important; }
+  .pc-home .pc-footer-inner { padding-block: 22px 16px !important; }
+}
+
+@media (max-width: 390px) {
+  .pc-home .pc-header-inner { height: 52px !important; }
+  .pc-home .pc-logo img { width: 138px !important; height: 32px !important; }
+  .pc-home .pc-hero { padding-top: 70px !important; }
+  .pc-home .pc-product-grid { gap: 8px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-home *, .pc-home *::before, .pc-home *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
