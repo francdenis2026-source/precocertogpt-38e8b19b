@@ -1,0 +1,51 @@
+:root{--pcx-bg:#07131c;--pcx-surface:#0b1d29;--pcx-ink:#142630;--pcx-muted:#62727a;--pcx-light:#f6f4ed;--pcx-line:rgba(255,255,255,.12);--pcx-primary:#147d8c;--pcx-primary2:#0c6270;--pcx-accent:#d88943;--pcx-success:#16845d;--pcx-r:18px;--pcx-shadow:0 18px 44px rgba(1,12,18,.18)}
+
+html{background:var(--pcx-bg)}
+body{background-color:var(--pcx-bg)!important;background-image:linear-gradient(180deg,rgba(5,17,25,.68),rgba(5,17,25,.88)),url("https://images.unsplash.com/photo-1481437156560-3205f6a55735?auto=format&fit=crop&w=2000&q=86")!important;background-size:cover!important;background-position:center top!important;background-repeat:no-repeat!important;background-attachment:fixed!important;color:var(--pcx-ink)}
+#root{min-height:100dvh;background:transparent!important}
+
+/* Do not replace existing hero artwork. */
+.pc-home,.pc-home .pc-hero,.pc-home [class*="hero"]{background-color:transparent}
+.pc-home{color:var(--pcx-light);padding-bottom:18px!important}
+.pc-home section,.pc-home .pc-section,.pc-home .pc-opportunities,.pc-home .pc-featured,.pc-home .pc-comparison,.pc-home .pc-benefits,.pc-home .pc-stores{margin-block:12px!important}
+.pc-home :is(.pc-section,.pc-opportunities,.pc-featured,.pc-comparison,.pc-benefits,.pc-stores){padding-block:12px!important}
+
+body :is(header,.pc-header,.pc-topbar,.pc-navbar){border-color:var(--pcx-line)!important;background-color:rgba(7,22,31,.84)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(1,11,17,.16)!important}
+body :is(header,.pc-header,.pc-topbar,.pc-navbar) :is(a,button){color:var(--pcx-light)!important}
+
+.pc-home .pc-hero{overflow:hidden;border:1px solid rgba(236,241,241,.16)!important;border-radius:22px!important;box-shadow:0 28px 70px rgba(1,12,18,.24)!important}
+.pc-home :is(h1,h2,h3,.pc-title,.pc-section-title){color:var(--pcx-light)!important;letter-spacing:-.025em;text-wrap:balance}
+.pc-home :is(p,.pc-subtitle,.pc-description,.pc-muted){color:#c5d0d2!important}
+
+.pc-home .pc-search{border:1px solid rgba(255,255,255,.92)!important;border-radius:15px!important;background:rgba(250,249,245,.98)!important;box-shadow:0 0 0 4px rgba(20,125,140,.12),0 16px 38px rgba(1,12,18,.22)!important}
+.pc-home .pc-search input{color:var(--pcx-ink)!important;-webkit-text-fill-color:var(--pcx-ink)!important;caret-color:var(--pcx-primary)!important;font-weight:650}
+.pc-home .pc-search input::placeholder{color:#718087!important;opacity:1}
+.pc-home .pc-search>svg{color:#48636c!important}
+
+.pc-home :is(.pc-opportunities,.pc-featured,.pc-comparison,.pc-benefits,.pc-stores){border:1px solid rgba(225,235,237,.10)!important;border-radius:22px!important;background:linear-gradient(180deg,rgba(8,25,35,.74),rgba(7,22,31,.82))!important;box-shadow:var(--pcx-shadow)!important;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+
+.pc-home :is(.pc-card,.pc-product-card,.pc-store-card,.pc-feature-card,.pc-benefit-card,.pc-info-card,.pc-category-card,.pc-comparison-card){border:1px solid rgba(35,59,70,.13)!important;border-radius:var(--pcx-r)!important;background:linear-gradient(180deg,rgba(252,250,244,.97),rgba(244,242,235,.93))!important;color:var(--pcx-ink)!important;box-shadow:0 10px 26px rgba(1,12,18,.13)!important;transition:transform 180ms cubic-bezier(.2,.8,.2,1),box-shadow 180ms ease,border-color 180ms ease}
+.pc-home :is(.pc-card,.pc-product-card,.pc-store-card,.pc-feature-card,.pc-benefit-card,.pc-category-card):hover{transform:translateY(-2px);border-color:rgba(20,125,140,.26)!important;box-shadow:0 15px 34px rgba(1,12,18,.16)!important}
+.pc-home :is(.pc-card,.pc-product-card,.pc-store-card,.pc-feature-card,.pc-benefit-card,.pc-category-card) :is(strong,h3,h4){color:var(--pcx-ink)!important}
+.pc-home :is(.pc-card,.pc-product-card,.pc-store-card,.pc-feature-card,.pc-benefit-card,.pc-category-card) :is(p,small){color:var(--pcx-muted)!important}
+
+.pc-home .pc-product-grid,.pc-home .pc-grid{gap:10px!important}
+.pc-home .pc-product-card{padding:10px!important}
+.pc-home .pc-product-media{border-radius:13px!important;background:rgba(255,255,255,.78)!important}
+.pc-home .pc-price-line strong,.pc-home :is(.pc-product-price,.pc-price,.pc-value){color:var(--pcx-success)!important;font-variant-numeric:tabular-nums}
+.pc-home .pc-price-line em,.pc-home :is(.pc-saving,.pc-badge-saving){color:#b9662c!important}
+.pc-home :is(.pc-badge,.pc-chip,.pc-tag){border:1px solid rgba(20,125,140,.18)!important;border-radius:999px!important;background:rgba(20,125,140,.10)!important;color:var(--pcx-primary2)!important}
+
+.pc-home :is(.pc-primary-button,.pc-compare-button,.pc-cta,a.pc-compare-button),.pc-home .pc-search button{min-height:44px;border:0!important;border-radius:13px!important;background:linear-gradient(135deg,var(--pcx-primary),var(--pcx-primary2))!important;color:#fff!important;box-shadow:0 9px 22px rgba(12,98,112,.23)!important;cursor:pointer;transition:transform 160ms ease,box-shadow 160ms ease}
+.pc-home :is(.pc-primary-button,.pc-compare-button,.pc-cta,a.pc-compare-button):hover,.pc-home .pc-search button:hover{transform:translateY(-1px);box-shadow:0 13px 28px rgba(12,98,112,.29)!important}
+
+body :is(footer,.pc-footer){border-top:1px solid rgba(236,241,241,.10)!important;background:rgba(6,20,29,.90)!important;color:#c5d0d2!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+body :is(button,a,input,select,textarea):focus-visible{outline:3px solid rgba(216,137,67,.48)!important;outline-offset:2px!important}
+
+[data-theme="dark"] .pc-home :is(.pc-card,.pc-product-card,.pc-store-card,.pc-feature-card,.pc-benefit-card,.pc-info-card,.pc-category-card,.pc-comparison-card){border-color:rgba(224,235,239,.14)!important;background:linear-gradient(180deg,rgba(11,31,42,.95),rgba(7,24,34,.97))!important;color:var(--pcx-light)!important}
+[data-theme="dark"] .pc-home :is(.pc-card,.pc-product-card,.pc-store-card,.pc-feature-card,.pc-benefit-card,.pc-category-card) :is(strong,h3,h4){color:var(--pcx-light)!important}
+[data-theme="dark"] .pc-home :is(.pc-card,.pc-product-card,.pc-store-card,.pc-feature-card,.pc-benefit-card,.pc-category-card) :is(p,small){color:#c5d0d2!important}
+
+@media(max-width:900px){body{background-attachment:scroll!important}.pc-home section,.pc-home .pc-section,.pc-home .pc-opportunities,.pc-home .pc-featured,.pc-home .pc-comparison,.pc-home .pc-benefits,.pc-home .pc-stores{margin-block:8px!important}.pc-home .pc-hero,.pc-home :is(.pc-opportunities,.pc-featured,.pc-comparison,.pc-benefits,.pc-stores){border-radius:18px!important}}
+@media(max-width:640px){.pc-home :is(.pc-section,.pc-opportunities,.pc-featured,.pc-comparison,.pc-benefits,.pc-stores){padding-block:9px!important}.pc-home .pc-product-grid,.pc-home .pc-grid{gap:8px!important}.pc-home .pc-product-card{padding:9px!important}}
+@media(prefers-reduced-motion:reduce){.pc-home :is(.pc-card,.pc-product-card,.pc-store-card,.pc-feature-card,.pc-benefit-card,.pc-category-card),.pc-home :is(button,a){transition:none!important}}
