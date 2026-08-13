@@ -8,7 +8,7 @@ import { HomepageSearchOverlayStable } from "./HomepageSearchOverlayStable";
 import "./HourlyHomeProductRotation.css";
 
 const HOUR_MS = 60 * 60 * 1000;
-const HOME_PRODUCT_LIMIT = 10;
+const HOME_PRODUCT_LIMIT = 5;
 const money = (value: number) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
 
 function hourBucket() {
